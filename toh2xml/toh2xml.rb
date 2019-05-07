@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 class Toh2xml      
-    attr_reader :input_file_name, :lines_in, :output_file_name, :lines_out
+  attr_reader :input_file_name, :lines_in, :output_file_name, :lines_out
 
-  def self.convert(csv_file_name)
+  def self.convert(csv_file_name:)
     new.convert(csv_file_name)
   end
 
@@ -11,28 +11,28 @@ class Toh2xml
   end  
 
   def convert(csv_file_name)
-    process_csv_file(csv_file_name)
+    parse_csv_file csv_file_name
     @map = @map.sort_by { |key, val| key.to_i }.to_h
-    write_xml_file(csv_file_name.sub(/.csv$/, '.xml'))
+    write_xml_file csv_file_name.sub(/.csv$/, '.xml')
     self
   end
 
   private
   
-  def process_csv_file(csv_file_name)
-    @input_file_name = csv_file_name
+  def parse_csv_file(input_file_name)
+    @input_file_name = input_file_name
     @lines_in = 0
 
-    File.open(csv_file_name).each_line do |line|
+    File.open(input_file_name).each_line do |line|
       process_csv_line line
     end
     self
   end
 
-  def write_xml_file(xml_file_name)
-    @output_file_name = xml_file_name
+  def write_xml_file(output_file_name)
+    @output_file_name = output_file_name
 
-    File.open(xml_file_name, 'w') do |out|
+    File.open(output_file_name, 'w') do |out|
       out << <<~XML
         <?xml version='1.0' encoding='utf-8'?>
         <lod>
@@ -69,7 +69,11 @@ end
 if __FILE__ == $PROGRAM_NAME
   puts "ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL} running"
   puts "command line: #{$PROGRAM_NAME} #{ARGV.join}"
-  conversion = Toh2xml.convert ARGV[0]
+  raise ArgumentError, "Too many command line args!" if ARGV.size > 1
+  raise ArgumentError, "Missing command line arg for input file name!" if ARGV.size < 1
+  raise ArgumentError, "Not a .csv file name specified - '#{ARGV[0]}'" if not ARGV[0].end_with? '.csv'
+
+  conversion = Toh2xml.convert csv_file_name: ARGV[0]
   puts "#{conversion.lines_in} lines read from file #{conversion.input_file_name}"
   puts "#{conversion.lines_out} lines written to file #{conversion.output_file_name}"
 end
