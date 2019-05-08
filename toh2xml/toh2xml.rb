@@ -13,7 +13,7 @@ class Toh2xml
   def convert(csv_file_name)
     parse_csv_file csv_file_name
     @map = @map.sort_by { |key, val| key.to_i }.to_h
-    write_xml_file csv_file_name.sub(/.csv$/, '.xml')
+    render_xml_file csv_file_name.sub(/.csv$/, '.xml')
     self
   end
 
@@ -24,33 +24,12 @@ class Toh2xml
     @lines_in = 0
 
     File.open(input_file_name).each_line do |line|
-      process_csv_line line
+      parse_csv_line line
     end
     self
   end
 
-  def write_xml_file(output_file_name)
-    @output_file_name = output_file_name
-
-    File.open(output_file_name, 'w') do |out|
-      out << <<~XML
-        <?xml version='1.0' encoding='utf-8'?>
-        <lod>
-      XML
-      @lines_out = 3;
-      @map.each do |key, val|
-        out << "    <text key='toh#{key}'>\n" \
-               "        <idno type='bdrc' uri='#{val}'/>\n" \
-               "    </text>\n"
-        @lines_out += 3
-      end
-      out << "</lod>\n"
-      @lines_out += 1
-    end
-    self
-  end
-
-  def process_csv_line(line)
+  def parse_csv_line(line)
     @lines_in += 1
 
     vals = line.strip!.split(',')
@@ -62,7 +41,32 @@ class Toh2xml
     raise ArgumentError, "line #{@lines_in}: duplicate value: #{line}" if @map.has_value? val
 
     @map[key] = val if [key, val] != ['toh', 'id']
-  end 
+  end
+
+  def render_xml_file(output_file_name)
+    @output_file_name = output_file_name
+
+    File.open(output_file_name, 'w') do |out|
+      out << <<~XML
+        <?xml version='1.0' encoding='utf-8'?>
+        <lod>
+      XML
+      @lines_out = 3;
+      @map.each do |key, val|
+        render_xml_item(out, key, val)
+      end
+      out << "</lod>\n"
+      @lines_out += 1
+    end
+    self
+  end
+
+  def render_xml_item(out, key, val)
+    out << "    <text key='toh#{key}'>\n" \
+           "        <idno type='bdrc' uri='#{val}'/>\n" \
+           "    </text>\n"
+    @lines_out += 3
+  end
 end
 
 
