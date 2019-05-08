@@ -26,7 +26,6 @@ class Toh2xml
     File.open(input_file_name).each_line do |line|
       parse_csv_line line
     end
-    self
   end
 
   def parse_csv_line(line)
@@ -45,20 +44,22 @@ class Toh2xml
 
   def render_xml_file(output_file_name)
     @output_file_name = output_file_name
-
+    @lines_out = 0
     File.open(output_file_name, 'w') do |out|
-      out << <<~XML
-        <?xml version='1.0' encoding='utf-8'?>
-        <lod>
-      XML
-      @lines_out = 3;
+      render_xml_header(out)
       @map.each do |key, val|
         render_xml_item(out, key, val)
       end
-      out << "</lod>\n"
-      @lines_out += 1
+      render_xml_footer(out)
     end
-    self
+  end
+
+  def render_xml_header(out)
+    out << <<~XML
+            <?xml version='1.0' encoding='utf-8'?>
+            <lod>
+    XML
+    @lines_out += 3
   end
 
   def render_xml_item(out, key, val)
@@ -66,6 +67,11 @@ class Toh2xml
            "        <idno type='bdrc' uri='#{val}'/>\n" \
            "    </text>\n"
     @lines_out += 3
+  end
+
+  def render_xml_footer(out)
+    out << "</lod>\n"
+    @lines_out += 1
   end
 end
 
