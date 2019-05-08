@@ -76,6 +76,29 @@ class Toh2xml
 end
 
 
+class  ForwardThinkingConverter < Toh2xml
+  def render_xml_header(out)
+    out << <<~XML
+            <?xml version='1.0' encoding='utf-8'?>
+            <lod>
+              <uris xmlns:eft-toh='http://purl.84000.co/toh'>
+    XML
+    @lines_out += 3
+  end
+
+  def render_xml_item(out, key, val)
+    out << "    <uri id='eft-toh:toh#{key}'>#{val}</uri>\n"
+    @lines_out += 1
+  end
+
+  def render_xml_footer(out)
+    out << "  </uris>\n" \
+           "</lod>\n"
+    @lines_out += 1
+  end
+end
+
+
 if __FILE__ == $PROGRAM_NAME
   puts "ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL} running"
   puts "command line: #{$PROGRAM_NAME} #{ARGV.join}"
@@ -83,7 +106,7 @@ if __FILE__ == $PROGRAM_NAME
   raise ArgumentError, "Missing command line arg for input file name!" if ARGV.size < 1
   raise ArgumentError, "Not a .csv file name specified - '#{ARGV[0]}'" if not ARGV[0].end_with? '.csv'
 
-  conversion = Toh2xml.convert csv_file_name: ARGV[0]
+  conversion = ForwardThinkingConverter.convert csv_file_name: ARGV[0]
   puts "#{conversion.lines_in} lines read from file #{conversion.input_file_name}"
   puts "#{conversion.lines_out} lines written to file #{conversion.output_file_name}"
 end
