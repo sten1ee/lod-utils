@@ -23,14 +23,14 @@ class TeiParser
     doc = Document.new File.new tei_file
     doc.elements.each('//gloss') do |elm|
       text = elm.to_s
-      GLOSSARY << "<!-- #{tei_file} -->\n" << text << "\n\n" if @filter&. === text
+      GLOSSARY << "<!-- #{tei_file} -->\n" << text << "\n\n" if @filter === text
 
       type = elm.attributes['type']
       @type_count[type] += 1
 
       id = elm.attributes['xml:id']
       cnt = @id_count[id] += 1
-      raise(ArgumentError, "Duplicate xml:id: #{id} !") if cnt != 1
+      rause(ArgumentError, "Duplicate xml:id: #{id} !") if cnt != 1
     end
     self
   end
