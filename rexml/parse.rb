@@ -30,7 +30,7 @@ class TeiParser
 
       id = elm.attributes['xml:id']
       cnt = @id_count[id] += 1
-      rause(ArgumentError, "Duplicate xml:id: #{id} !") if cnt != 1
+      raise(ArgumentError, "Duplicate xml:id: #{id} !") if cnt != 1
     end
     self
   end
