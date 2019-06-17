@@ -10,8 +10,14 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.NumericDocValuesField;
 import org.apache.lucene.document.TextField;
+import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
@@ -32,10 +38,13 @@ import static java.lang.System.out;
 import co.eft.util.Xml;
 import co.eft.util.Iterables;
 
+import javax.xml.xpath.XPathExpressionException;
+
 public class LuceneSandbox {
     static final Logger log = LoggerFactory.getLogger(LuceneSandbox.class);
 
     static final Version  LuceneVersion = Version.LUCENE_4_10_4;
+    static final String  fieldName = "sa-ltn";
 
     static class AnalyzerArgs {
         final Version version = LuceneVersion;
@@ -76,14 +85,23 @@ public class LuceneSandbox {
         }
     }
 
-    static IndexWriter  new_IndexWriter() {
-        return new_IndexWriter("index-tmp/");
+    final static Directory indexDir;
+    static {
+        try {
+            indexDir = FSDirectory.open(new File("index-tmp/"));
+        } catch (IOException exn) {
+            throw new RuntimeException(exn);
+        }
     }
 
-    static IndexWriter  new_IndexWriter(String indexDir) {
+    static IndexWriter  new_IndexWriter() {
+        return new_IndexWriter(indexDir);
+    }
+
+    static IndexWriter  new_IndexWriter(Directory dir) {
         try {
-            Directory dir = FSDirectory.open(new File(indexDir));
             IndexWriterConfig config = new IndexWriterConfig(LuceneVersion, new_IndexSanskritAnalyzer());
+            config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
             return new IndexWriter(dir, config);
         } catch (IOException exn) {
             log.error("While initializing IndexWriter: ", exn);
@@ -99,118 +117,58 @@ public class LuceneSandbox {
                 ++i;
                 Document doc = new Document();
                 doc.add(new NumericDocValuesField("docId", i));
-                doc.add(new Field("sa-ltn", term, TextField.TYPE_STORED));
+                doc.add(new Field(fieldName, term, TextField.TYPE_STORED));
                 iwriter.addDocument(doc);
             }
+            log.info(String.format("%d docs indexed", i));
         }
     }
 
-    static void  searchAll(Iterable<String> terms) throws IOException {
-    }
-
-    static final String xmlToIndex;
-    static {
-        xmlToIndex =
-            "<data xml:id=\"data-1\">maitreyapraṇid</data>\n" +
-            "<data xml:id=\"data-2\">Maitreyapraṇid</data>\n" +
-            "<data xml:id=\"data-3\">MaitreyaPraṇid</data>\n" +
-            "<data xml:id=\"data-4\">Maitreyapraṇidhana</data>\n" +
-            "<data xml:id=\"data-5\">Maitreya\u00ADpraṇidhana</data>\n" +
-            "<data xml:id=\"data-6\">Maitreya\u00ADpraṇidhana\u00ADrāja</data>\n" +
-            "<data xml:id=\"data-7\">maitreyapra[mukhas]ṇidhana</data>\n" +
-            "<data xml:id=\"data-8\">Maitreyapraṇidhanarāja</data>\n" +
-            "<data xml:id=\"data-9\">Atyayajñānasūtra</data>\n" +
-            "<data xml:id=\"data-10\">Maitreya</data>\n" +
-            "<data xml:id=\"data-11\">Atyayajñāna\u00ADsūtra</data>\n" +
-            "<data xml:id=\"data-13\">Abiding</data>\n" +
-            "<data xml:id=\"data-14\">Calm-abiding</data>\n" +
-            "<data xml:id=\"data-15\">Miracles</data>\n" +
-            "<data xml:id=\"data-16\">miraculous</data>\n" +
-            "<data xml:id=\"data-17\">Buddhadharma</data>\n" +
-            "<data xml:id=\"data-18\">Maitreyaṇidhana</data>\n" +
-            "<data xml:id=\"data-19\">sūtra</data>\n" +
-            "<data xml:id=\"data-20\">Sūtta</data>\n" +
-            "<data xml:id=\"data-21\">saptamuni</data>\n" +
-            "<data xml:id=\"data-22\">sapta</data>\n" +
-            "<data xml:id=\"data-23\">saptotsada</data>\n" +
-            "<data xml:id=\"data-24\">tṛṣṇā</data>\n" +
-            "<data xml:id=\"data-25\">trsna</data>\n" +
-            "<data xml:id=\"data-26\">trishna</data>\n" +
-            "<data xml:id=\"data-27\">Dhāraṇī</data>\n" +
-            "<data xml:id=\"data-28\">Dhāraṇī</data>\n" +
-            "<data xml:id=\"data-29\">śīla</data>\n" +
-            "<data xml:id=\"data-30\">pari\u00ADjñātu\u00ADkāma</data>\n" +
-            "<data xml:id=\"data-31\">śāliṃcī</data>\n" +
-            "<data xml:id=\"data-32\">pari\u00ADjñātu\u00ADkāma</data>\n" +
-            "<data xml:id=\"data-33\">ḷrkāra</data>\n" +
-            "<data xml:id=\"data-34\">ḷkāra</data>\n" +
-            "<data xml:id=\"data-35\">ḹ </data>\n" +
-            "<data xml:id=\"data-36\">ṝkāra</data>\n" +
-            "<data xml:id=\"data-37\">śaraḥ</data>\n" +
-            "<data xml:id=\"data-38\">ācāryamuṣṭi</data>\n" +
-            "<data xml:id=\"data-39\">ācāryamuṣṭi</data>\n" +
-            "<data xml:id=\"data-40\">bodhimaṇḍa</data>\n";
-    }
-
-    static String  extractText(String textToIndex) {
-        Pattern p = Pattern.compile("<data xml:id=\"([^\"]+)\">([^<]+)</data>\\s*");
-        Matcher matcher = p.matcher(textToIndex);
-        StringBuilder sb = new StringBuilder();
-        for (int count = 0; matcher.find(); ) {
-            count++;
-            String match_id = matcher.group(1);
-            String match_txt = matcher.group(2);
-            out.printf("data-%d: '%s' : %s\n", count, match_id, match_txt);
-            sb.append(match_txt + "\n");
-        }
-        return sb.toString();
-    }
-
-    static void  processWithRegEx() {
-        String textToIndex = extractText(xmlToIndex);
-        StringReader reader = new StringReader(textToIndex);
-
-        try (Analyzer   anz = new_IndexSanskritAnalyzer();
-             TokenStream ts = anz.tokenStream("field", reader)) {
-
-            OffsetAttribute offsetAtt = ts.addAttribute(OffsetAttribute.class);
-            CharTermAttribute termAtt = ts.addAttribute(CharTermAttribute.class);
-            ts.reset();
-            while (ts.incrementToken()) {
-                String token = termAtt.toString();
-                out.println("[" + token + "]");
-                out.println("Token starting offset: " + offsetAtt.startOffset());
-                out.println(" Token ending offset: " + offsetAtt.endOffset());
-                out.println("");
+    static void  searchAll(Iterable<String> phrases) throws IOException, ParseException {
+        try (DirectoryReader ireader = DirectoryReader.open(indexDir)) {
+            IndexSearcher isearcher = new IndexSearcher(ireader);
+            // Parse a simple query that searches for "text":
+            QueryParser parser = new QueryParser(fieldName, new_QuerySanskritAnalyzer());
+            for (String phrase : phrases) {
+                Query query = parser.parse(phrase);
+                ScoreDoc[] hits = isearcher.search(query, null, 1000).scoreDocs;
+                // Iterate through the results:
+                log.info("----------------------------------------");
+                log.info(String.format("Searching for phrase '%s' ...", phrase));
+                for (ScoreDoc hit : hits) {
+                    Document doc = ireader.document(hit.doc);
+                    log.info(String.format("... scoredd %2.2f on doc '%s'", hit.score, doc.get(fieldName)));
+                }
             }
-            ts.end();
-        } catch (IOException exn) {
-            log.error("Fatal error: ", exn);
         }
+        //indexDir.close()
+    }
+
+    static void  dumpDataAndTests(Xml.Doc doc, String dataPath, String testPath) throws XPathExpressionException {
+        int i = 0;
+        for (Node node : doc.nodes(testPath))
+            out.format("Test[%d]: %s\n", ++i, node.getTextContent());
+
+        doc.nodes(dataPath)
+           .forEach(node -> {
+                out.format("Data: %s\n", node.getTextContent());
+           });
     }
 
 
-
-
-    public static void  main(String[] args) throws Exception {
+    public static void  main(String[] args) throws XPathExpressionException, IOException, ParseException
+    {
         System.out.format("Working Directory = %s\n", System.getProperty("user.dir"));
-        Xml.Doc doc = Xml.Doc("resources/lucene-tests.xml");
+        Xml.Doc doc = Xml.parseDoc("resources/lucene-tests.xml");
         String lang = "Sa-Ltn";
         String testPath = String.format("/lucene-tests/lang[@lang='%s']/test/query", lang);
         String dataPath = String.format("/lucene-tests/lang[@lang='%s']/data/.", lang);
 
-        int i=0;
-        for (Node node : doc.nodes(testPath))
-            out.format("Test[%d]: %s\n", ++i, node.getTextContent());
+        dumpDataAndTests(doc, dataPath, testPath);
 
-        List<String> data = new ArrayList<>();
-        Iterable<Node> nodes = doc.nodes(dataPath);
-        nodes.forEach(node -> {
-            out.format("Data: %s\n", node.getTextContent());
-            data.add(node.getTextContent());
-        });
+        indexAll(Iterables.convert(doc.nodes(dataPath), node -> node.getTextContent()));
 
-        indexAll(Iterables.convert(nodes, node -> node.getTextContent()));
+        searchAll(Iterables.convert(doc.nodes(testPath), node -> node.getTextContent()));
     }
 }
 

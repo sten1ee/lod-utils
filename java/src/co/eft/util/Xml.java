@@ -44,13 +44,13 @@ public class Xml {
         }
     }
 
-    public static Doc Doc(InputStream is) {
+    public static Doc parseDoc(InputStream is) {
         return new Xml.Doc(is);
     }
 
-    public static Doc  Doc(String fileName) {
+    public static Doc parseDoc(String fileName) {
         try {
-            return Doc(new FileInputStream(fileName));
+            return parseDoc(new FileInputStream(fileName));
         }
         catch (FileNotFoundException exn) {
             throw new RuntimeException(exn);
