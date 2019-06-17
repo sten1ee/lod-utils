@@ -15,8 +15,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.Spliterators;
 
 public class Xml {
 
@@ -73,12 +71,8 @@ class NodeListIterator implements Iterator<Node> {
     }
 
     @Override
-    public boolean hasNext() {
-        return nextIdx < endIdx;
-    }
+    public boolean hasNext() { return nextIdx < endIdx; }
 
     @Override
-    public Node next() {
-        return nodeList.item(nextIdx++);
-    }
+    public Node next() { return nodeList.item(nextIdx++); }
 }
