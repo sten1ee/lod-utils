@@ -39,18 +39,18 @@ public class Xml {
             }
         }
 
-        Iterable<Node> nodes(String xpathExpression) throws XPathExpressionException {
+        public Iterable<Node> nodes(String xpathExpression) throws XPathExpressionException {
             XPathExpression xpathExp = xPath.compile(xpathExpression);
             NodeList nodeList = (NodeList) xpathExp.evaluate(xmlDocument, XPathConstants.NODESET);
             return () -> new NodeListIterator(nodeList);
         }
     }
 
-    static Doc Doc(InputStream is) {
+    public static Doc Doc(InputStream is) {
         return new Xml.Doc(is);
     }
 
-    static Doc  Doc(String fileName) {
+    public static Doc  Doc(String fileName) {
         try {
             return Doc(new FileInputStream(fileName));
         }

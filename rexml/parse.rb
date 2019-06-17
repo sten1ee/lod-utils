@@ -44,6 +44,15 @@ end
 
 # doc = XmlSimple.xml_in('061-013_toh193,739_prophecy_of_shri_mahadevi.xml')
 
-parser = TeiParser.new(filter:/[Pp][āa][ṇn][ḍd]ava/) #/[Bb]hagav[āa][nt]/
-         .process_dir('translations')
-         .write_reports STDOUT
+if __FILE__ == $PROGRAM_NAME
+  puts "ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL} running"
+  puts "command line: #{$PROGRAM_NAME} #{ARGV.join}"
+  raise ArgumentError, "Too many command line args!" if ARGV.size > 1
+  raise ArgumentError, "Missing command line arg for input file name!" if ARGV.size < 1
+  raise ArgumentError, "Not a .csv file name specified - '#{ARGV[0]}'" if not ARGV[0].end_with? '.csv'
+
+  parser = TeiParser.new(filter:/[Pp][āa][ṇn][ḍd]ava/) #/[Bb]hagav[āa][nt]/
+               .process_dir('translations')
+               .write_reports STDOUT
+  parser
+end
