@@ -2,10 +2,6 @@ package co.eft.luc_sa;
 
 import io.bdrc.lucene.sa.SanskritAnalyzer;
 
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
-import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.NumericDocValuesField;
@@ -27,11 +23,6 @@ import org.w3c.dom.Node;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static java.lang.System.out;
 
@@ -44,7 +35,8 @@ public class LuceneSandbox {
     static final Logger log = LoggerFactory.getLogger(LuceneSandbox.class);
 
     static final Version  LuceneVersion = Version.LUCENE_4_10_4;
-    static final String  fieldName = "sa-ltn";
+    static final String FN_BODY = "sa-ltn";
+    static final String FN_DOCID = "doc-id";
 
     static class AnalyzerArgs {
         final Version version = LuceneVersion;
@@ -116,8 +108,9 @@ public class LuceneSandbox {
             for (String term : terms) {
                 ++i;
                 Document doc = new Document();
-                doc.add(new NumericDocValuesField("docId", i));
-                doc.add(new Field(fieldName, term, TextField.TYPE_STORED));
+                doc.add(new NumericDocValuesField(FN_DOCID, i));
+                doc.add(new Field(FN_BODY, term, TextField.TYPE_STORED));
+                log.info(String.format("*** Indexing doc[%d]: '%s' ...", i, term));
                 iwriter.addDocument(doc);
             }
             log.info(String.format("%d docs indexed", i));
@@ -128,16 +121,19 @@ public class LuceneSandbox {
         try (DirectoryReader ireader = DirectoryReader.open(indexDir)) {
             IndexSearcher isearcher = new IndexSearcher(ireader);
             // Parse a simple query that searches for "text":
-            QueryParser parser = new QueryParser(fieldName, new_QuerySanskritAnalyzer());
+            QueryParser parser = new QueryParser(FN_BODY, new_QuerySanskritAnalyzer());
             for (String phrase : phrases) {
                 Query query = parser.parse(phrase);
                 ScoreDoc[] hits = isearcher.search(query, null, 1000).scoreDocs;
                 // Iterate through the results:
                 log.info("----------------------------------------");
-                log.info(String.format("Searching for phrase '%s' ...", phrase));
+                log.info(String.format("Searching for phrase '%s', query looks like: (%s)", phrase, query));
                 for (ScoreDoc hit : hits) {
                     Document doc = ireader.document(hit.doc);
-                    log.info(String.format("... scoredd %2.2f on doc '%s'", hit.score, doc.get(fieldName)));
+                    int    docId = (hit.doc + 1);//doc.get(FN_DOCID);
+                    String body  = doc.get(FN_BODY);
+                    log.info(String.format(". scored %2.2f on doc[%d] '%s'",
+                                            hit.score, docId, body));
                 }
             }
         }
