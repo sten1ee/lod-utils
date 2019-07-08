@@ -9,7 +9,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,19 +28,28 @@ public class Xml {
                 xmlDocument = builder.parse(is);
                 xPath = XPathFactory.newInstance().newXPath();
             }
-            catch (RuntimeException exn) {
-                throw exn;
-            }
             catch (Exception exn) {
-                throw new RuntimeException(exn);
+                throw wrap(exn);
             }
         }
 
-        public Iterable<Node> nodes(String xpathExpression) throws XPathExpressionException {
-            XPathExpression xpathExp = xPath.compile(xpathExpression);
-            NodeList nodeList = (NodeList) xpathExp.evaluate(xmlDocument, XPathConstants.NODESET);
-            return () -> new NodeListIterator(nodeList);
+        public Iterable<Node> nodes(String xpathExpression) {
+            try {
+                XPathExpression xpathExp = xPath.compile(xpathExpression);
+                NodeList nodeList = (NodeList) xpathExp.evaluate(xmlDocument, XPathConstants.NODESET);
+                return () -> new NodeListIterator(nodeList);
+            }
+            catch (Exception exn) {
+                throw wrap(exn);
+            }
         }
+    }
+
+    public static RuntimeException  wrap(Exception exn) throws RuntimeException {
+        if (exn instanceof RuntimeException)
+            return (RuntimeException) exn;
+        else
+            return new RuntimeException(exn);
     }
 
     public static Doc parseDoc(InputStream is) {
@@ -53,10 +61,9 @@ public class Xml {
             return parseDoc(new FileInputStream(fileName));
         }
         catch (FileNotFoundException exn) {
-            throw new RuntimeException(exn);
+            throw wrap(exn);
         }
     }
-
 }
 
 class NodeListIterator implements Iterator<Node> {
