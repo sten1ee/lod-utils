@@ -1,5 +1,6 @@
 package co.eft.luc_sa;
 
+import co.eft.util.Exn;
 import io.bdrc.lucene.sa.SanskritAnalyzer;
 
 import org.apache.lucene.document.Document;
@@ -23,8 +24,6 @@ import org.w3c.dom.Node;
 
 import java.io.File;
 import java.io.IOException;
-
-import static java.lang.System.out;
 
 import co.eft.util.Xml;
 import co.eft.util.Iterables;
@@ -56,9 +55,8 @@ public class LuceneSandbox {
                 a.inputEncoding, a.mergePrepositions,
                 a.filterGeminates, a.indexLenient);
         } catch (IOException exn) {
-            log.error("While initializing (index) SanskritAnalyzer: ", exn);
-            System.exit(-1);
-            return null;
+            log.error("Error initializing (index) SanskritAnalyzer: ");
+            throw Exn.wrap(exn);
         }
     }
 
@@ -70,9 +68,8 @@ public class LuceneSandbox {
                 a.inputEncoding, a.mergePrepositions,
                 a.filterGeminates, a.queryLenient);
         } catch (IOException exn) {
-            log.error("While initializing (query) SanskritAnalyzer: ", exn);
-            System.exit(-1);
-            return null;
+            log.error("Error initializing (query) SanskritAnalyzer: ");
+            throw Exn.wrap(exn);
         }
     }
 
@@ -81,7 +78,7 @@ public class LuceneSandbox {
         try {
             indexDir = FSDirectory.open(new File("index-tmp/"));
         } catch (IOException exn) {
-            throw new RuntimeException(exn);
+            throw Exn.wrap(exn);
         }
     }
 
@@ -95,9 +92,8 @@ public class LuceneSandbox {
             config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
             return new IndexWriter(dir, config);
         } catch (IOException exn) {
-            log.error("While initializing IndexWriter: ", exn);
-            System.exit(-1);
-            return null;
+            log.error("Error initializing IndexWriter: ");
+            throw Exn.wrap(exn);
         }
     }
 
@@ -136,7 +132,6 @@ public class LuceneSandbox {
                 }
             }
         }
-        //indexDir.close()
     }
 
     static void  dumpDataAndTests(Xml.Doc doc, String dataPath, String queryPath) {

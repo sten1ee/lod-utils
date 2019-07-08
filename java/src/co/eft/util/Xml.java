@@ -29,7 +29,7 @@ public class Xml {
                 xPath = XPathFactory.newInstance().newXPath();
             }
             catch (Exception exn) {
-                throw wrap(exn);
+                throw Exn.wrap(exn);
             }
         }
 
@@ -40,16 +40,9 @@ public class Xml {
                 return () -> new NodeListIterator(nodeList);
             }
             catch (Exception exn) {
-                throw wrap(exn);
+                throw Exn.wrap(exn);
             }
         }
-    }
-
-    public static RuntimeException  wrap(Exception exn) throws RuntimeException {
-        if (exn instanceof RuntimeException)
-            return (RuntimeException) exn;
-        else
-            return new RuntimeException(exn);
     }
 
     public static Doc parseDoc(InputStream is) {
@@ -61,7 +54,7 @@ public class Xml {
             return parseDoc(new FileInputStream(fileName));
         }
         catch (FileNotFoundException exn) {
-            throw wrap(exn);
+            throw Exn.wrap(exn);
         }
     }
 }
