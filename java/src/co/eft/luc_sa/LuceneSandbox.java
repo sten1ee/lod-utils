@@ -141,11 +141,30 @@ public class LuceneSandbox {
         log.info("");
     }
 
+    final static String lucene_tests_content =
+"<lucene-tests xmlns='http://read.84000.co/ns/1.0'>\n"+
+"    <lang xml:lang='Sa-Ltn'>\n"+
+"        <label>Sanskrit</label>\n"+
+"        <test xml:id='test-1'>\n"+
+"            <query>Maitreya­praṇidhana</query>\n"+
+"        </test>\n"+
+"        <data xml:id='data-1'>maitreyapraṇid</data>\n"+
+"        <data xml:id='data-2'>Maitreyapraṇid</data>\n"+
+"        <data xml:id='data-3'>MaitreyaPraṇid</data>\n"+
+"        <data xml:id='data-4'>Maitreyapraṇidhana</data>\n"+
+"        <data xml:id='data-5'>Maitreya­praṇidhana</data>\n"+
+"        <data xml:id='data-6'>Maitreya­praṇidhana­rāja</data>\n"+
+"        <data xml:id='data-7'>maitreyapra[mukhas]ṇidhana</data>\n"+
+"        <data xml:id='data-8'>Maitreyapraṇidhanarāja</data>\n"+
+"        <data xml:id='data-9'>Maitreyaṇidhana</data>\n"+
+"    </lang>\n"+
+"</lucene-tests>\n"+
+"";
 
     public static void  main(String[] args) throws Exception
     {
         System.out.format("Working Directory = %s\n", System.getProperty("user.dir"));
-        Xml.Doc doc = Xml.parseDoc(new File("resources/lucene-tests.short.xml"));
+        Xml.Doc doc = Xml.parseDoc(lucene_tests_content);
         String lang = "Sa-Ltn";
         String queryPath = String.format("/lucene-tests/lang[@lang='%s']/test/query", lang);
         String dataPath = String.format("/lucene-tests/lang[@lang='%s']/data/.", lang);
@@ -157,5 +176,3 @@ public class LuceneSandbox {
         searchAll(Iterables.convert(doc.nodes(queryPath), Node::getTextContent));
     }
 }
-
-
