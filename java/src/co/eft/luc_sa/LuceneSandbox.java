@@ -1,6 +1,5 @@
 package co.eft.luc_sa;
 
-import co.eft.util.Exn;
 import io.bdrc.lucene.sa.SanskritAnalyzer;
 
 import org.apache.lucene.document.Document;
@@ -21,13 +20,140 @@ import org.apache.lucene.util.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
-import java.io.File;
-import java.io.IOException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
+import java.io.*;
 
-import co.eft.util.Xml;
-import co.eft.util.Iterables;
+import java.util.Iterator;
+import java.util.function.Function;
 
+
+class Iterables {
+
+    private Iterables() {}
+
+    private static class IteratorAdapter<S, T> implements Iterator<T> {
+        private final Iterator<S>    src;
+        private final Function<S, T> converter;
+
+        IteratorAdapter(Iterator<S> src, Function<S, T> converter) {
+            this.src = src;
+            this.converter = converter;
+        }
+
+        @Override
+        public boolean hasNext() { return src.hasNext(); }
+
+        @Override
+        public T next() { return converter.apply(src.next()); }
+
+        @Override
+        public void remove() { src.remove(); }
+    }
+
+    public static <S, T>  Iterable<T> convert(Iterable<S> src, Function<S, T> converter) {
+        return () -> new IteratorAdapter<>(src.iterator(), converter);
+    }
+}
+
+
+class Exn {
+
+    public static RuntimeException  wrap(Exception exn) {
+        if (exn instanceof RuntimeException)
+            return (RuntimeException) exn;
+        else
+            return new RuntimeException(exn);
+    }
+}
+
+
+class Xml {
+
+    public static class Doc {
+        private final org.w3c.dom.Document xmlDocument;
+        private final XPath xPath;
+        private static final XPathFactory xPathFactory = XPathFactory.newInstance();
+
+        private Doc(Object source) {
+            xmlDocument = prepareDocument(source);
+            xPath = xPathFactory.newXPath();
+        }
+
+        private org.w3c.dom.Document prepareDocument(Object source) {
+            try {
+                DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder = builderFactory.newDocumentBuilder();
+                if (source instanceof InputStream)
+                    return builder.parse((InputStream)source);
+                if (source instanceof String)
+                    source = new StringReader((String)source);
+                if (source instanceof Reader)
+                    return builder.parse(new InputSource((Reader)source));
+                if (source instanceof File)
+                    return builder.parse((File)source);
+                throw new RuntimeException(String.format("Unrecognized Xml.Doc source: %s", source));
+            }
+            catch (Exception exn) {
+                throw Exn.wrap(exn);
+            }
+        }
+
+        public Iterable<Node> nodes(String xpathExpression) {
+            try {
+                XPathExpression xpathExp = xPath.compile(xpathExpression);
+                NodeList nodeList = (NodeList) xpathExp.evaluate(xmlDocument, XPathConstants.NODESET);
+                return () -> new NodeListIterator(nodeList);
+            }
+            catch (Exception exn) {
+                throw Exn.wrap(exn);
+            }
+        }
+    }
+
+    public static Doc parseDoc(InputStream is) {
+        return new Doc(is);
+    }
+
+    public static Doc parseDoc(Reader rdr) {
+        return new Doc(rdr);
+    }
+
+    /** Parse xml file */
+    public static Doc parseDoc(File file) {
+        return new Doc(file);
+    }
+
+    /** Parse inline xml */
+    public static Doc parseDoc(String inlineXml) {
+        return new Doc(inlineXml);
+    }
+}
+
+class NodeListIterator implements Iterator<Node> {
+    private final NodeList  nodeList;
+    private final int endIdx;
+    private int nextIdx = 0;
+
+
+    NodeListIterator(NodeList nodeList) {
+        this.nodeList = nodeList;
+        this.endIdx = nodeList.getLength();
+    }
+
+    @Override
+    public boolean hasNext() { return nextIdx < endIdx; }
+
+    @Override
+    public Node next() { return nodeList.item(nextIdx++); }
+}
 
 public class LuceneSandbox {
     static final Logger log = LoggerFactory.getLogger(LuceneSandbox.class);
@@ -142,24 +268,24 @@ public class LuceneSandbox {
     }
 
     final static String lucene_tests_content =
-"<lucene-tests xmlns='http://read.84000.co/ns/1.0'>\n"+
-"    <lang xml:lang='Sa-Ltn'>\n"+
-"        <label>Sanskrit</label>\n"+
-"        <test xml:id='test-1'>\n"+
-"            <query>Maitreya­praṇidhana</query>\n"+
-"        </test>\n"+
-"        <data xml:id='data-1'>maitreyapraṇid</data>\n"+
-"        <data xml:id='data-2'>Maitreyapraṇid</data>\n"+
-"        <data xml:id='data-3'>MaitreyaPraṇid</data>\n"+
-"        <data xml:id='data-4'>Maitreyapraṇidhana</data>\n"+
-"        <data xml:id='data-5'>Maitreya­praṇidhana</data>\n"+
-"        <data xml:id='data-6'>Maitreya­praṇidhana­rāja</data>\n"+
-"        <data xml:id='data-7'>maitreyapra[mukhas]ṇidhana</data>\n"+
-"        <data xml:id='data-8'>Maitreyapraṇidhanarāja</data>\n"+
-"        <data xml:id='data-9'>Maitreyaṇidhana</data>\n"+
-"    </lang>\n"+
-"</lucene-tests>\n"+
-"";
+        "<lucene-tests xmlns='http://read.84000.co/ns/1.0'>\n"+
+        "    <lang xml:lang='Sa-Ltn'>\n"+
+        "        <label>Sanskrit</label>\n"+
+        "        <test xml:id='test-1'>\n"+
+        "            <query>Maitreya­praṇidhana</query>\n"+
+        "        </test>\n"+
+        "        <data xml:id='data-1'>maitreyapraṇid</data>\n"+
+        "        <data xml:id='data-2'>Maitreyapraṇid</data>\n"+
+        "        <data xml:id='data-3'>MaitreyaPraṇid</data>\n"+
+        "        <data xml:id='data-4'>Maitreyapraṇidhana</data>\n"+
+        "        <data xml:id='data-5'>Maitreya­praṇidhana</data>\n"+
+        "        <data xml:id='data-6'>Maitreya­praṇidhana­rāja</data>\n"+
+        "        <data xml:id='data-7'>maitreyapra[mukhas]ṇidhana</data>\n"+
+        "        <data xml:id='data-8'>Maitreyapraṇidhanarāja</data>\n"+
+        "        <data xml:id='data-9'>Maitreyaṇidhana</data>\n"+
+        "    </lang>\n"+
+        "</lucene-tests>\n"+
+        "";
 
     public static void  main(String[] args) throws Exception
     {
