@@ -145,7 +145,7 @@ public class LuceneSandbox {
     public static void  main(String[] args) throws Exception
     {
         System.out.format("Working Directory = %s\n", System.getProperty("user.dir"));
-        Xml.Doc doc = Xml.parseDoc("resources/lucene-tests.short.xml");
+        Xml.Doc doc = Xml.parseDoc(new File("resources/lucene-tests.short.xml"));
         String lang = "Sa-Ltn";
         String queryPath = String.format("/lucene-tests/lang[@lang='%s']/test/query", lang);
         String dataPath = String.format("/lucene-tests/lang[@lang='%s']/data/.", lang);
