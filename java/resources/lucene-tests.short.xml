@@ -1,0 +1,23 @@
+<lucene-tests xmlns="http://read.84000.co/ns/1.0">
+    <lang xml:lang="Sa-Ltn">
+        <label>Sanskrit</label>
+        <test xml:id="test-1">
+            <query>Maitreya­praṇidhana</query>
+            <match data-id="data-4"/>
+            <match data-id="data-5"/>
+            <match data-id="data-6"/>
+            <match data-id="data-7"/>
+            <match data-id="data-8"/>
+            <match data-id="data-9"/>
+        </test>
+        <data xml:id="data-1">maitreyapraṇid</data>
+        <data xml:id="data-2">Maitreyapraṇid</data>
+        <data xml:id="data-3">MaitreyaPraṇid</data>
+        <data xml:id="data-4">Maitreyapraṇidhana</data>
+        <data xml:id="data-5">Maitreya­praṇidhana</data>
+        <data xml:id="data-6">Maitreya­praṇidhana­rāja</data>
+        <data xml:id="data-7">maitreyapra[mukhas]ṇidhana</data>
+        <data xml:id="data-8">Maitreyapraṇidhanarāja</data>
+        <data xml:id="data-9">Maitreyaṇidhana</data>
+    </lang>
+</lucene-tests>

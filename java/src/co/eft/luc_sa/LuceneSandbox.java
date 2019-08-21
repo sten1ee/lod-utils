@@ -38,10 +38,11 @@ public class LuceneSandbox {
 
     static class AnalyzerArgs {
         final Version version = LuceneVersion;
-        final String  mode = "word";
+        final String  mode = "syl";
         final String  inputEncoding = "roman";
         final Boolean mergePrepositions = false;
-        final Boolean filterGeminates = false;
+        final Boolean indexFilterGeminates = true;
+        final Boolean queryFilterGeminates = false;
         final String  indexLenient = "index";
         final String  queryLenient = "query";
         final String  noLenient = "no";
@@ -53,7 +54,7 @@ public class LuceneSandbox {
             return new SanskritAnalyzer(
                 a.version, a.mode,
                 a.inputEncoding, a.mergePrepositions,
-                a.filterGeminates, a.indexLenient);
+                a.indexFilterGeminates, a.indexLenient);
         } catch (IOException exn) {
             log.error("Error initializing (index) SanskritAnalyzer: ");
             throw Exn.wrap(exn);
@@ -66,7 +67,7 @@ public class LuceneSandbox {
             return new SanskritAnalyzer(
                 a.version, a.mode,
                 a.inputEncoding, a.mergePrepositions,
-                a.filterGeminates, a.queryLenient);
+                a.queryFilterGeminates, a.queryLenient);
         } catch (IOException exn) {
             log.error("Error initializing (query) SanskritAnalyzer: ");
             throw Exn.wrap(exn);
@@ -127,7 +128,7 @@ public class LuceneSandbox {
                     Document doc = ireader.document(hit.doc);
                     int    docId = (hit.doc + 1);//doc.get(FN_DOCID);
                     String body  = doc.get(FN_BODY);
-                    log.info(String.format(". scored %2.2f on doc[%d] '%s'",
+                    log.info(String.format("  scored %2.2f on doc[%d] '%s'",
                                             hit.score, docId, body));
                 }
             }
@@ -150,7 +151,7 @@ public class LuceneSandbox {
     public static void  main(String[] args) throws Exception
     {
         System.out.format("Working Directory = %s\n", System.getProperty("user.dir"));
-        Xml.Doc doc = Xml.parseDoc("resources/lucene-tests.xml");
+        Xml.Doc doc = Xml.parseDoc("resources/lucene-tests.short.xml");
         String lang = "Sa-Ltn";
         String queryPath = String.format("/lucene-tests/lang[@lang='%s']/test/query", lang);
         String dataPath = String.format("/lucene-tests/lang[@lang='%s']/data/.", lang);
