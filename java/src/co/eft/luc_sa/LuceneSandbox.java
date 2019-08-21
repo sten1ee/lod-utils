@@ -51,10 +51,7 @@ public class LuceneSandbox {
     static SanskritAnalyzer  new_IndexSanskritAnalyzer() {
         AnalyzerArgs a = new AnalyzerArgs();
         try {
-            return new SanskritAnalyzer(
-                a.version, a.mode,
-                a.inputEncoding, a.mergePrepositions,
-                a.indexFilterGeminates, a.indexLenient);
+            return new SanskritAnalyzer.IndexLenientSyl();
         } catch (IOException exn) {
             log.error("Error initializing (index) SanskritAnalyzer: ");
             throw Exn.wrap(exn);
@@ -64,10 +61,7 @@ public class LuceneSandbox {
     static SanskritAnalyzer  new_QuerySanskritAnalyzer() {
         AnalyzerArgs a = new AnalyzerArgs();
         try {
-            return new SanskritAnalyzer(
-                a.version, a.mode,
-                a.inputEncoding, a.mergePrepositions,
-                a.queryFilterGeminates, a.queryLenient);
+            return new SanskritAnalyzer.QueryLenientSyl();
         } catch (IOException exn) {
             log.error("Error initializing (query) SanskritAnalyzer: ");
             throw Exn.wrap(exn);
