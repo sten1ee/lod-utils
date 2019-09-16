@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'rexml/document'
 
 # A class to process all *.tei files in a dir
@@ -47,11 +49,13 @@ end
 if __FILE__ == $PROGRAM_NAME
   puts "ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL} running"
   puts "command line: #{$PROGRAM_NAME} #{ARGV.join}"
-  raise ArgumentError, "Too many command line args!" if ARGV.size > 1
-  raise ArgumentError, "Missing command line arg for input file name!" if ARGV.size < 1
-  raise ArgumentError, "Not a .csv file name specified - '#{ARGV[0]}'" if not ARGV[0].end_with? '.csv'
+  raise ArgumentError, 'Too many command line args!' if ARGV.size > 1
+  raise ArgumentError, 'Missing command line arg for report filter! Supply "*" to match all.' if ARGV.size < 1
+  filter = ARGV[0]
+  filter = '.*' if filter.empty? || filter == '*'
+  #raise ArgumentError, "Not a .csv file name specified - '#{ARGV[0]}'" if not ARGV[0].end_with? '.csv'
 
-  parser = TeiParser.new(filter:/[Pp][āa][ṇn][ḍd]ava/) #/[Bb]hagav[āa][nt]/
+  parser = TeiParser.new(filter: Regexp.new(filter, Regexp::IGNORECASE)) #/[Bb]hagav[āa][nt]/  #/[Pp][āa][ṇn][ḍd]ava/
                .process_dir('translations')
                .write_reports STDOUT
   parser
