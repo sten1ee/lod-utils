@@ -1,0 +1,35 @@
+# Quoting excerpt from Élie Roux's mail
+# fwd-ed to me by Dom
+# date: 24 April 2019
+# subject: Elie's summary
+#
+# This one should be a relatively simple export of the TEI header.
+# Here's an example (with made up simplified properties,
+# to give an indication of the big picture):
+
+eft:UT22084-055-001 a :Work ;   # eft: is something I made up for 84000
+    :workType bdr:AbstractText ;
+    :title "Samādhi­rāja­sūtra"@sa-x-iast , "The King of Samādhis Sūtra"@en, "ཏིང་ངེ་འཛིན་གྱི་རྒྱལ་པོའི་མདོ།"@bo ;
+    :BDRCEq bdr:W0RKA0580 ;
+    :workHasExpression eft:UT22084-055-001_BO , eft:UT22084-055-001_EN
+    .
+
+eft:UT22084-055-001_BO a :Work ;
+    :rKTsKnumber 580 ;
+    :lang bdr:Tibetan ;
+    :BDRCEq bdr:W0RKT0580 ;
+    :translator (Tibetan Translator) ;
+    # etc ...
+    .
+
+eft:UT22084-055-001_EN a :Work ;
+    :translator eft:P1243 ;
+    :lang bdr:English ;
+    :htmlView <http://read.84000.co/translation/UT22084-055-001.html> ;
+    # ... some info on the translation (date, version, etc.)
+    .
+
+eft:P1243 a :Person ;
+    :VIAFEq <http://viaf.org/viaf/119623158> ;
+    :name "Peter Alan Roberts"
+    .
