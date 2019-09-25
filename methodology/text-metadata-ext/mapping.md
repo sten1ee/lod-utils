@@ -9,7 +9,11 @@
 /teiHeader/fileDesc/titleStmt/author
   [@role="translatorMain"  @ref="contributors.xml#team-22"]    -->  "Translated by Peter Alan Roberts<lb/>under the patronage and supervision of 84000: Translating the Words of the Buddha"@en
   [@role="translatorEng"   @ref="contributors.xml#person-142"] -->  "Peter Alan Roberts"@en
+
+/teiHeader/fileDesc/titleStmt/consultant
   [@role="advisor"         @ref="contributors.xml#person-147"] -->  "Ling-Lung Chen"@en
+
+/teiHeader/fileDesc/titleStmt/editor
   [@role="reviser"         @ref="contributors.xml#person-143"] -->  "Emily Bower"@en
   [@role="reviser"         @ref="contributors.xml#person-232"] -->  "Ben Gleason"@en
   [@role="TEImarkupEditor" @ref="contributors.xml#person-92"]  -->  "Laura Goetz"@en
