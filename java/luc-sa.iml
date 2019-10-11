@@ -18,7 +18,14 @@
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-sandbox:4.10.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:slf4j-simple:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
-    <orderEntry type="library" name="lucene-sa-1.0.11.5" level="project" />
-    <orderEntry type="library" name="slf4j-simple-1.7.25" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../exist/lib/user/lucene-sa.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

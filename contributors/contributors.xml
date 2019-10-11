@@ -1,0 +1,1907 @@
+<contributors xmlns="http://read.84000.co/ns/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:m="http://read.84000.co/ns/1.0">
+    <team xml:id="team-1">
+        <label>Abhidhanottara Translation Project</label>
+    </team>
+    <team xml:id="team-2">
+        <label>Annie Bien and team</label>
+    </team>
+    <team xml:id="team-3">
+        <label>Anne Burchardi and team</label>
+    </team>
+    <team xml:id="team-4">
+        <label>Bhaiṣajyavastu Translation Team</label>
+    </team>
+    <team xml:id="team-5">
+        <label>Blazing Wisdom Translation Group</label>
+    </team>
+    <team xml:id="team-6">
+        <label>Bruno Galasek-Hul and Team</label>
+    </team>
+    <team xml:id="team-7">
+        <label>Buddhavacana Translation Group</label>
+    </team>
+    <team xml:id="team-8">
+        <label>Dakarnava Translation Project</label>
+    </team>
+    <team xml:id="team-9">
+        <label>Dharmachakra Translation Committee</label>
+    </team>
+    <team xml:id="team-10">
+        <label>Dharmasagara Translation Group</label>
+    </team>
+    <team xml:id="team-11">
+        <label>Dr. David Jackson</label>
+    </team>
+    
+    <team xml:id="team-13">
+        <label>Four Reliances Translations</label>
+    </team>
+    <team xml:id="team-14">
+        <label>Gangtok Translation Group</label>
+    </team>
+    <team xml:id="team-15">
+        <label>Garchen Buddhist Institute Translation Group</label>
+    </team>
+    <team xml:id="team-16">
+        <label>Karen Liljenberg and team</label>
+    </team>
+    <team xml:id="team-17">
+        <label>Karma Gyaltsen Ling</label>
+    </team>
+    <team xml:id="team-18">
+        <label>Lochung Translation Committee</label>
+    </team>
+    <team xml:id="team-19">
+        <label>Lokaksi Translator Group</label>
+    </team>
+    <team xml:id="team-20">
+        <label>Nalanda Translation Committee</label>
+    </team>
+    <team xml:id="team-21">
+        <label>Padmakara Translation Group</label>
+    </team>
+    <team xml:id="team-22">
+        <label>Peter Roberts and team</label>
+    </team>
+    <team xml:id="team-23">
+        <label>Prof. Peter Skilling</label>
+    </team>
+    <team xml:id="team-24">
+        <label>Ratnaśrī Translation Group</label>
+    </team>
+    <team xml:id="team-25">
+        <label>Robert Mayer and team</label>
+    </team>
+    <team xml:id="team-26">
+        <label>Robert Miller and team</label>
+    </team>
+    <team xml:id="team-27">
+        <label>Sakya Pandita Translation Group</label>
+    </team>
+    <team xml:id="team-28">
+        <label>Sarasvatī Translation Team</label>
+    </team>
+    <team xml:id="team-29">
+        <label>Sonam Tsering and team</label>
+    </team>
+    <team xml:id="team-30">
+        <label>Steven Weinberger and team</label>
+    </team>
+    <team xml:id="team-31">
+        <label>Tenpa Tsering and team</label>
+    </team>
+    <team xml:id="team-32">
+        <label>The Norwegian Institute of Palaeography and Historical Philology (PHI)</label>
+    </team>
+    <team xml:id="team-33">
+        <label>Tibetan Classics Translators Guild of New York</label>
+    </team>
+    <team xml:id="team-34">
+        <label>UCSB Buddhist Studies Translation Group</label>
+    </team>
+    <team xml:id="team-35">
+        <label>University of Calgary Buddhist Studies</label>
+    </team>
+    <team xml:id="team-36">
+        <label>University of Toronto</label>
+    </team>
+    <team xml:id="team-37">
+        <label>University of the West</label>
+    </team>
+    <team xml:id="team-38">
+        <label>Vikramashila Translation House</label>
+    </team>
+    <team xml:id="team-39">
+        <label>Kirtimukha Translation Team</label>
+    </team>
+    <team xml:id="team-40" rend="hidden">
+        <label>84000 Editors</label>
+    </team>
+    <team xml:id="team-41" rend="hidden">
+        <label>84000 Copyeditors</label>
+    </team>
+    <team xml:id="team-42" rend="hidden">
+        <label>84000 Markup editors</label>
+    </team>
+    <team xml:id="team-43" rend="hidden">
+        <label>84000 Reviewers</label>
+    </team>
+    <team xml:id="team-44">
+        <label>Vienna Translation Group</label>
+    </team>
+    <team xml:id="team-45">
+        <label>Mañjughoṣa Translation Project Leipzig</label>
+    </team>
+    <team xml:id="team-46">
+        <label>Alexander Csoma de Kőrös Translation Group</label>
+    </team>
+    <team xml:id="team-47">
+        <label>Adam Pearcey</label>
+    </team><team xml:id="team-48"><label>Lhasey Lotsawa Translations</label></team>
+    <institution xml:id="institution-1" institution-type-id="1" region-id="1">
+        <label>Santa Clara University</label>
+    </institution>
+    <institution xml:id="institution-2" institution-type-id="1" region-id="2">
+        <label>University of Oxford</label>
+    </institution>
+    <institution xml:id="institution-3" institution-type-id="1" region-id="1">
+        <label>Concordia University of Montreal</label>
+    </institution>
+    <institution xml:id="institution-4" institution-type-id="2" region-id="2">
+        <label>University of Zurich</label>
+    </institution>
+    <institution xml:id="institution-5" institution-type-id="1" region-id="1">
+        <label>Columbia University</label>
+    </institution>
+    <institution xml:id="institution-6" institution-type-id="" region-id="5">
+        <label>Tibet House</label>
+    </institution>
+    <institution xml:id="institution-8" institution-type-id="1" region-id="5">
+        <label>International Buddhist College</label>
+    </institution>
+    <institution xml:id="institution-9" institution-type-id="1" region-id="3">
+        <label>University of Pune</label>
+    </institution>
+    <institution xml:id="institution-11" institution-type-id="1" region-id="1">
+        <label>Columbia University Press</label>
+    </institution>
+    <institution xml:id="institution-12" institution-type-id="1" region-id="2">
+        <label>University of Copenhagen</label>
+    </institution>
+    <institution xml:id="institution-13" institution-type-id="2" region-id="2">
+        <label>Danakosha Dharma Center</label>
+    </institution>
+    <institution xml:id="institution-14" institution-type-id="1" region-id="2">
+        <label>School of Oriental and African Studies (SOAS), University of London</label>
+    </institution>
+    <institution xml:id="institution-15" institution-type-id="1" region-id="4">
+        <label>University of Tokyo</label>
+    </institution>
+    <institution xml:id="institution-16" institution-type-id="1" region-id="1">
+        <label>McMaster University</label>
+    </institution>
+    <institution xml:id="institution-17" institution-type-id="1" region-id="2">
+        <label>University of Lausanne</label>
+    </institution>
+    <institution xml:id="institution-19" institution-type-id="2" region-id="3">
+        <label>Drikung Kagyu Institute</label>
+    </institution>
+    <institution xml:id="institution-20" institution-type-id="2" region-id="1">
+        <label>Riwoche Tibetan Buddhist Temple</label>
+    </institution>
+    <institution xml:id="institution-21" institution-type-id="2" region-id="2">
+        <label>Blazing Wisdom Institute</label>
+    </institution>
+    <institution xml:id="institution-22" institution-type-id="1" region-id="1">
+        <label>University of California, Berkeley</label>
+    </institution>
+    
+    <institution xml:id="institution-24" institution-type-id="2" region-id="1">
+        <label>Ewam Choden Tibetan Buddhist Center</label>
+    </institution>
+    <institution xml:id="institution-25" institution-type-id="1" region-id="2">
+        <label>University of Vienna</label>
+    </institution>
+    <institution xml:id="institution-26" institution-type-id="1" region-id="3">
+        <label>Songtsen Library</label>
+    </institution>
+    <institution xml:id="institution-27" institution-type-id="2" region-id="3">
+        <label>Karmapa International Buddhist Institute</label>
+    </institution>
+    
+    <institution xml:id="institution-35" institution-type-id="1" region-id="4">
+        <label>Kaichi International University</label>
+    </institution>
+    <institution xml:id="institution-36" institution-type-id="2" region-id="3">
+        <label>Ka-Nying Shedrub Ling Monastery</label>
+    </institution>
+    <institution xml:id="institution-46" institution-type-id="1" region-id="1">
+        <label>University of Wisconsin-Madison</label>
+    </institution>
+    <institution xml:id="institution-48" institution-type-id="1" region-id="5">
+        <label>Mahidol University</label>
+    </institution>
+    <institution xml:id="institution-49" institution-type-id="1" region-id="3">
+        <label>Kathmandu University</label>
+    </institution>
+    <institution xml:id="institution-50" institution-type-id="1" region-id="1">
+        <label>Emory University</label>
+    </institution>
+    <institution xml:id="institution-51" institution-type-id="1" region-id="3">
+        <label>Rangjung Yeshe Institute</label>
+    </institution>
+    <institution xml:id="institution-55" institution-type-id="2" region-id="2">
+        <label>Zangdok Palri Institute</label>
+    </institution>
+    <institution xml:id="institution-63" institution-type-id="" region-id="1">
+        <label>Rubin Museum of Art</label>
+    </institution>
+    <institution xml:id="institution-67" institution-type-id="2" region-id="3">
+        <label>Dzongsar Khyentse Chökyi Lodrö Institute</label>
+    </institution>
+    <institution xml:id="institution-68" institution-type-id="1" region-id="2">
+        <label>Khyentse Center for Tibetan Buddhist Textual Scholarship</label>
+    </institution>
+    <institution xml:id="institution-69" institution-type-id="" region-id="5">
+        <label>Siddhartha’s Intent</label>
+    </institution>
+    <institution xml:id="institution-70" institution-type-id="1" region-id="2">
+        <label>University of Hamburg</label>
+    </institution>
+    <institution xml:id="institution-72" institution-type-id="2" region-id="3">
+        <label>Sera Jey Monastic University</label>
+    </institution>
+    <institution xml:id="institution-75" institution-type-id="2" region-id="5">
+        <label>Waikato Compassion Meditation Centre</label>
+    </institution>
+    <institution xml:id="institution-84" institution-type-id="1" region-id="3">
+        <label>Namgyal Institute of Tibetology</label>
+    </institution>
+    <institution xml:id="institution-85" institution-type-id="1" region-id="3">
+        <label>Sikkim Institute of Higher Nyingma Studies</label>
+    </institution>
+    <institution xml:id="institution-87" institution-type-id="2" region-id="1">
+        <label>Garchen Buddhist Institute</label>
+    </institution>
+    <institution xml:id="institution-89" institution-type-id="2" region-id="3">
+        <label>Jangchubling, Dehradun</label>
+    </institution>
+    <institution xml:id="institution-90" institution-type-id="2" region-id="1">
+        <label>Tibetan Meditation Center, Maryland</label>
+    </institution>
+    <institution xml:id="institution-91" institution-type-id="1" region-id="3">
+        <label>Central University of Tibetan Studies (CUTS)</label>
+    </institution>
+    <institution xml:id="institution-93" institution-type-id="2" region-id="5">
+        <label>Chung Tai Chan Monastery</label>
+    </institution>
+    <institution xml:id="institution-94" institution-type-id="2" region-id="1">
+        <label>Pema Karpo Meditation Center</label>
+    </institution>
+    <institution xml:id="institution-95" institution-type-id="2" region-id="1">
+        <label>Gar Drolma Choling Buddhist Center</label>
+    </institution>
+    <institution xml:id="institution-97" institution-type-id="2" region-id="1">
+        <label>Rigdzin Dharma Foundation</label>
+    </institution>
+    <institution xml:id="institution-98" institution-type-id="1" region-id="1">
+        <label>St. Joseph’s University</label>
+    </institution>
+    <institution xml:id="institution-99" institution-type-id="1" region-id="5">
+        <label>Postgraduate Institute of Pali and Buddhist Studies</label>
+    </institution>
+    <institution xml:id="institution-101" institution-type-id="2" region-id="2">
+        <label>Thessaloniki Buddhist Center ‘Karma Gyaltsen Ling’</label>
+    </institution>
+    <institution xml:id="institution-102" institution-type-id="1" region-id="2">
+        <label>Perrotis College, American Farm School</label>
+    </institution>
+    <institution xml:id="institution-104" institution-type-id="1" region-id="2">
+        <label>Ludwig-Maximillian University of Munich</label>
+    </institution>
+    <institution xml:id="institution-105" institution-type-id="" region-id="1">
+        <label>Wisdom Publications</label>
+    </institution>
+    <institution xml:id="institution-106" institution-type-id="2" region-id="3">
+        <label>The Office of His Holiness the Fourteenth Dalai Lama</label>
+    </institution>
+    <institution xml:id="institution-107" institution-type-id="1" region-id="5">
+        <label>Australian National University</label>
+    </institution>
+    <institution xml:id="institution-109" institution-type-id="1" region-id="5">
+        <label>Sakya College, Australian National University</label>
+    </institution>
+    <institution xml:id="institution-110" institution-type-id="1" region-id="1">
+        <label>Naropa University</label>
+    </institution>
+    <institution xml:id="institution-111" institution-type-id="2" region-id="2">
+        <label>Association du Centre d’Etudes de Chanteloube</label>
+    </institution>
+    <institution xml:id="institution-113" institution-type-id="2" region-id="2">
+        <label>Padmakara Translation Group</label>
+    </institution>
+    <institution xml:id="institution-114" institution-type-id="1" region-id="2">
+        <label>University of London</label>
+    </institution>
+    <institution xml:id="institution-115" institution-type-id="2" region-id="5">
+        <label>Shambhala International Community</label>
+    </institution>
+    <institution xml:id="institution-117" institution-type-id="2" region-id="1">
+        <label>Sakya Monastery, Seattle</label>
+    </institution>
+    <institution xml:id="institution-118" institution-type-id="" region-id="3">
+        <label>Thrangu Dharmakara Publications</label>
+    </institution>
+    
+    <institution xml:id="institution-122" institution-type-id="2" region-id="3">
+        <label>Private Office of His Holiness Drikung Kyabgön Chetsang</label>
+    </institution>
+    <institution xml:id="institution-123" institution-type-id="2" region-id="1">
+        <label>Nitartha Institute</label>
+    </institution>
+    <institution xml:id="institution-131" institution-type-id="2" region-id="1">
+        <label>Rangjung Yeshe Gomde California</label>
+    </institution>
+    <institution xml:id="institution-132" institution-type-id="2" region-id="3">
+        <label>Shechen Monastery</label>
+    </institution>
+    <institution xml:id="institution-134" institution-type-id="2" region-id="3">
+        <label>Jangsa Gompa</label>
+    </institution>
+    <institution xml:id="institution-135" institution-type-id="1" region-id="1">
+        <label>University of California, Santa Barbara</label>
+    </institution>
+    <institution xml:id="institution-136" institution-type-id="2" region-id="3">
+        <label>Lhundrub Chime Gatsal Ling</label>
+    </institution>
+    <institution xml:id="institution-138" institution-type-id="1" region-id="2">
+        <label>Konfuzius-Institutan der Universität Freiburg</label>
+    </institution>
+    <institution xml:id="institution-139" institution-type-id="1" region-id="2">
+        <label>University of Jyväskylä</label>
+    </institution>
+    <institution xml:id="institution-141" institution-type-id="2" region-id="1">
+        <label>Drepung Loseling</label>
+    </institution>
+    
+    <institution xml:id="institution-143" institution-type-id="2" region-id="1">
+        <label>Tsechen Kunchab Ling</label>
+    </institution>
+    <institution xml:id="institution-144" institution-type-id="2" region-id="3">
+        <label>International Buddhist Academy</label>
+    </institution>
+    <institution xml:id="institution-145" institution-type-id="1" region-id="1">
+        <label>Vassar College</label>
+    </institution>
+    <institution xml:id="institution-147" institution-type-id="1" region-id="3">
+        <label>Jawaharlal Nehru University</label>
+    </institution>
+    <institution xml:id="institution-155" institution-type-id="1" region-id="4">
+        <label>Fudan University</label>
+    </institution>
+    <institution xml:id="institution-156" institution-type-id="2" region-id="1">
+        <label>Foundation for the Preservation of the Mahayana Tradition (FPMT)</label>
+    </institution>
+    <institution xml:id="institution-158" institution-type-id="1" region-id="1">
+        <label>University of Virginia UMA Institute of Tibetan Studies</label>
+    </institution>
+    <institution xml:id="institution-161" institution-type-id="2" region-id="3">
+        <label>Mindroling Monastery Clement Town</label>
+    </institution>
+    <institution xml:id="institution-162" institution-type-id="2" region-id="3">
+        <label>Sarnath International Nyingma Institute</label>
+    </institution>
+    <institution xml:id="institution-163" institution-type-id="1" region-id="2">
+        <label>University of Oslo</label>
+    </institution>
+    
+    <institution xml:id="institution-174" institution-type-id="1" region-id="1">
+        <label>University of Calgary</label>
+    </institution>
+    <institution xml:id="institution-176" institution-type-id="1" region-id="1">
+        <label>University of Toronto</label>
+    </institution>
+    <institution xml:id="institution-178" institution-type-id="1" region-id="1">
+        <label>University of Michigan</label>
+    </institution>
+    <institution xml:id="institution-181" institution-type-id="1" region-id="1">
+        <label>University of the West</label>
+    </institution>
+    <institution xml:id="institution-184" institution-type-id="1" region-id="1">
+        <label>University of California, Los Angeles</label>
+    </institution>
+    <institution xml:id="institution-186" institution-type-id="2" region-id="3">
+        <label>Kagyu College</label>
+    </institution>
+    <institution xml:id="institution-187" institution-type-id="2" region-id="3">
+        <label>Rinchen Ling Monastery</label>
+    </institution>
+    <institution xml:id="institution-188" institution-type-id="1" region-id="3">
+        <label>Asian University for Women</label>
+    </institution>
+    <institution xml:id="institution-189" institution-type-id="1" region-id="1">
+        <label>Harvard University</label>
+    </institution>
+    <institution xml:id="institution-190" institution-type-id="1" region-id="1">
+        <label>Temple University</label>
+    </institution>
+    <institution xml:id="institution-191" institution-type-id="1" region-id="1">
+        <label>Rice University</label>
+    </institution>
+    <institution xml:id="institution-192" institution-type-id="2" region-id="3">
+        <label>Larung Gar Buddhist Academy</label>
+    </institution>
+    <institution xml:id="institution-193" institution-type-id="1" region-id="1">
+        <label>Utah State University</label>
+    </institution>
+    <institution xml:id="institution-194" institution-type-id="1" region-id="1">
+        <label>Middlebury College</label>
+    </institution>
+    <institution xml:id="institution-195" institution-type-id="1" region-id="1">
+        <label>Muhlenberg College</label>
+    </institution>
+    <institution xml:id="institution-196" institution-type-id="1" region-id="1">
+        <label>Stanford University</label>
+    </institution>
+    <institution xml:id="institution-197" institution-type-id="" region-id="1">
+        <label>Institute of Tibetan Classics</label>
+    </institution>
+    <institution xml:id="institution-198" institution-type-id="1" region-id="1">
+        <label>University of Mary Washington</label>
+    </institution>
+    <institution xml:id="institution-199" institution-type-id="1" region-id="2">
+        <label>IKGA, Austrian Academy of Sciences</label>
+    </institution>
+    <institution xml:id="institution-200" institution-type-id="1" region-id="2">
+        <label>Leipzig University</label>
+    </institution>
+    <institution xml:id="institution-201" institution-type-id="1" region-id="1">
+        <label>Georgia College</label>
+    </institution>
+    <institution xml:id="institution-202" institution-type-id="1" region-id="2">
+        <label>Eötvös Loránd University (ELTE)</label>
+    </institution>
+    <institution xml:id="institution-203" institution-type-id="1" region-id="1">
+        <label>West Carolina University</label>
+    </institution>
+    <institution xml:id="institution-204" institution-type-id="1" region-id="2">
+        <label>University of Leipzig</label>
+    </institution>
+    <institution xml:id="institution-205" institution-type-id="" region-id="2">
+        <label>British Museum</label>
+    </institution>
+    <institution xml:id="institution-206" institution-type-id="" region-id="1">
+        <label>Tsadra Foundation</label>
+    </institution>
+    <institution xml:id="institution-207" institution-type-id="" region-id="1">
+        <label>Dipa Foundation</label>
+    </institution>
+    <institution xml:id="institution-208" institution-type-id="1" region-id="1">
+        <label>Union Theological Seminary in the City of New York</label>
+    </institution>
+    <region id="1">
+        <label>North America</label>
+    </region>
+    <region id="2">
+        <label>Europe</label>
+    </region>
+    <region id="3">
+        <label>India / Nepal / Tibet</label>
+    </region>
+    <region id="4">
+        <label>China / Japan</label>
+    </region>
+    <region id="5">
+        <label>Other</label>
+    </region>
+    <institution-type id="1">
+        <label>Academic Instituion</label>
+    </institution-type>
+    <institution-type id="2">
+        <label>Buddhist Center</label>
+    </institution-type>
+    <person xml:id="person-1">
+        <label>Dr. David B. Gray</label>
+        <institution id="institution-1"/>
+        <team id="team-1"/>
+        <team id="team-8"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-2">
+        <label>Peter-Daniel Szanto</label>
+        <institution id="institution-2"/>
+        <team id="team-1"/>
+    </person>
+    <person xml:id="person-3">
+        <label>Shaman Hatley</label>
+        <institution id="institution-3"/>
+        <team id="team-1"/>
+    </person>
+    <person xml:id="person-4">
+        <label>Olga Serbaeva</label>
+        <institution id="institution-4"/>
+        <team id="team-1"/>
+        <team id="team-8"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-5">
+        <label>Annie Bien</label>
+        <institution id="institution-5"/>
+        <team id="team-2"/>
+    </person>
+    <person xml:id="person-6">
+        <label>Geshe Dorji Damdul</label>
+        <institution id="institution-6"/>
+        <team id="team-2"/>
+    </person>
+    <person xml:id="person-7">
+        <label>Dr. Paul Hackett</label>
+        <institution id="institution-5"/>
+        <institution id="institution-8"/>
+        <team id="team-2"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-8">
+        <label>Dr. Robert Thurman</label>
+        <institution id="institution-5"/>
+        <team id="team-2"/>
+    </person>
+    <person xml:id="person-9">
+        <label>Dr. Shrikant Bahulkar</label>
+        <institution id="institution-9"/>
+        <team id="team-2"/>
+    </person>
+    <person xml:id="person-10">
+        <label>Dr. Bo Jiang</label>
+        <institution id="institution-5"/>
+        <team id="team-2"/>
+    </person>
+    <person xml:id="person-11">
+        <label>Leslie Kriesel</label>
+        <institution id="institution-11"/>
+        <team id="team-2"/>
+    </person>
+    <person xml:id="person-12">
+        <label>Dr. Anne Burchardi</label>
+        <institution id="institution-12"/>
+        <team id="team-3"/>
+    </person>
+    <person xml:id="person-13">
+        <label>Tulku Dakpa Rinpoche</label>
+        <institution id="institution-13"/>
+        <team id="team-3"/>
+    </person>
+    <person xml:id="person-14">
+        <label>David Jackson, Dr.</label>
+        <institution id="institution-63"/>
+        <team id="team-11"/>
+    </person>
+    <person xml:id="person-16">
+        <label>Shayne Clarke</label>
+        <institution id="institution-16"/>
+        <team id="team-4"/>
+    </person>
+    <person xml:id="person-17">
+        <label>Gregory Schopen</label>
+        <institution id="institution-184"/>
+        <team id="team-4"/>
+    </person>
+    <person xml:id="person-18">
+        <label>Masahiro Shimoda</label>
+        <institution id="institution-15"/>
+        <team id="team-4"/>
+    </person>
+    <person xml:id="person-19">
+        <label>Virginia Blum</label>
+        <institution id="institution-19"/>
+        <team id="team-5"/>
+    </person>
+    <person xml:id="person-20">
+        <label>Khenpo Sonam Tobgyal Rinpoche</label>
+        <institution id="institution-20"/>
+        <team id="team-5"/>
+    </person>
+    <person xml:id="person-21">
+        <label>Tulku Sherdor Rinpoche</label>
+        <institution id="institution-21"/>
+        <team id="team-5"/>
+    </person>
+    <person xml:id="person-22">
+        <label>Meghan Howard</label>
+        <institution id="institution-22"/>
+        <team id="team-5"/>
+        <team id="team-38"/>
+    </person>
+    <person xml:id="person-23">
+        <label>Bruno Galasek-Hul</label>
+        <institution id="institution-22"/>
+        <team id="team-6"/>
+    </person>
+    <person xml:id="person-24">
+        <label>Roxanne Sooshani</label>
+        <team id="team-6"/>
+    </person>
+    <person xml:id="person-25">
+        <label>Lama Kunga Thartse Rinpoche</label>
+        <institution id="institution-24"/>
+        <team id="team-6"/>
+    </person>
+    <person xml:id="person-26">
+        <label>Anna Staubly</label>
+        <team id="team-6"/>
+    </person>
+    <person xml:id="person-27">
+        <label>Gregory Forgues</label>
+        <institution id="institution-25"/>
+        <team id="team-7"/>
+    </person>
+    <person xml:id="person-28">
+        <label>Khenpo Konchok Tamphel</label>
+        <institution id="institution-26"/>
+        <institution id="institution-19"/>
+        <team id="team-7"/>
+        <team id="team-24"/>
+    </person>
+    <person xml:id="person-29">
+        <label>Khenpo Mriti</label>
+        <institution id="institution-27"/>
+        <team id="team-7"/>
+    </person>
+    <person xml:id="person-30">
+        <label>Rolf Scheuermann</label>
+        <institution id="institution-25"/>
+        <team id="team-7"/>
+        <team id="team-45"/>
+    </person>
+    <person xml:id="person-31">
+        <label>Casey Kemp</label>
+        <institution id="institution-25"/>
+        <team id="team-7"/>
+    </person>
+    <person xml:id="person-32">
+        <label>Dennis Johnson</label>
+        <institution id="institution-25"/>
+        <team id="team-7"/>
+    </person>
+    <person xml:id="person-33">
+        <label>Honza Dolensky</label>
+        <institution id="institution-25"/>
+        <team id="team-7"/>
+    </person>
+    <person xml:id="person-34">
+        <label>Xie Zhuoran</label>
+        <institution id="institution-25"/>
+        <team id="team-7"/>
+    </person>
+    <person xml:id="person-36">
+        <label>Doboom Tulku Rinpoche</label>
+        <team id="team-8"/>
+    </person>
+    <person xml:id="person-37">
+        <label>Peter Skilling</label>
+        <team id="team-23"/>
+    </person>
+    <person xml:id="person-38">
+        <label>Iain Sinclair</label>
+        <team id="team-8"/>
+    </person>
+    <person xml:id="person-39">
+        <label>Tsunehiko Sugiki</label>
+        <institution id="institution-35"/>
+        <team id="team-8"/>
+    </person>
+    <person xml:id="person-40">
+        <label>Chökyi Nyima Rinpoche</label>
+        <institution id="institution-36"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-41">
+        <label>Khenpo Gyaltsen</label>
+        <institution id="institution-36"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-42">
+        <label>Khenpo Pema Gyaltsen</label>
+        <institution id="institution-36"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-43">
+        <label>Khenpo Pema Namgyal</label>
+        <institution id="institution-36"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-44">
+        <label>Khenpo Lodro Rabsal</label>
+        <institution id="institution-36"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-45">
+        <label>Khenpo Tsondru Sangpo</label>
+        <institution id="institution-36"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-46">
+        <label>Khenpo Trogpa Tulku</label>
+        <institution id="institution-36"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-47">
+        <label>Khenpo Urgyen Tenpel</label>
+        <institution id="institution-36"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-48">
+        <label>Lama Tenzin Sangpo</label>
+        <institution id="institution-36"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-49">
+        <label>Karma Ozer Lama</label>
+        <institution id="institution-36"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-50">
+        <label>Dr. Andreas Doctor</label>
+        <institution id="institution-51"/>
+        <institution id="institution-49"/>
+        <team id="team-9"/>
+        <team id="team-40"/>
+    </person>
+    <person xml:id="person-51">
+        <label>Dr. James Duncan Gentry</label>
+        <institution id="institution-51"/>
+        <institution id="institution-49"/>
+        <institution id="institution-189"/>
+        <team id="team-9"/>
+        <team id="team-30"/>
+        <team id="team-40"/>
+    </person>
+    <person xml:id="person-52">
+        <label>Tracy Davis</label>
+        <team id="team-41"/>
+    </person>
+    <person xml:id="person-53">
+        <label>Khenpo Pema Sherab</label>
+    </person>
+    <person xml:id="person-54">
+        <label>Dr. Thomas Doctor</label>
+        <institution id="institution-49"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-55">
+        <label>Ven. Ani Jinpa (Eugenie De Jong)</label>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-56">
+        <label>Alex Yiannopoulos</label>
+        <institution id="institution-50"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-57">
+        <label>Anders Bjornback</label>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-58">
+        <label>Anna Zilman</label>
+        <institution id="institution-51"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-59">
+        <label>Benjamin Collet-Cassart</label>
+        <institution id="institution-51"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-60">
+        <label>Benjamin Ewing</label>
+        <institution id="institution-51"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-61">
+        <label>Catherine Dalton</label>
+        <institution id="institution-22"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-62">
+        <label>Chloe Cramer</label>
+        <institution id="institution-51"/>
+        <institution id="institution-55"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-63">
+        <label>Daniel Patrick McNamara</label>
+        <institution id="institution-50"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-64">
+        <label>Guillaume Avertin</label>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-65">
+        <label>Heidi Koppl</label>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-66">
+        <label>Joseph Mark McClellan</label>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-67">
+        <label>Lowell Cook</label>
+        <institution id="institution-51"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-68">
+        <label>Luke P Hanley</label>
+        <institution id="institution-51"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-69">
+        <label>Mattia Salvini</label>
+        <institution id="institution-48"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-70">
+        <label>Miguel Fares Sawaya</label>
+        <institution id="institution-51"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-71">
+        <label>Nika Jovic</label>
+        <institution id="institution-25"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-72"><label>Oriane Lavolé</label><institution id="institution-51"/><team id="team-9"/><team id="team-48"/></person>
+    <person xml:id="person-73">
+        <label>Rikke Siggard</label>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-74">
+        <label>Ryan Damron</label>
+        <institution id="institution-22"/>
+        <institution id="institution-131"/>
+        <team id="team-9"/>
+        <team id="team-40"/>
+    </person>
+    <person xml:id="person-75">
+        <label>Timothy Hinkle</label>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-76">
+        <label>Wiesiek Mical</label>
+        <institution id="institution-49"/>
+        <team id="team-9"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-77">
+        <label>Yanneke Jitta</label>
+        <institution id="institution-51"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-78">
+        <label>Zachary Beer</label>
+        <institution id="institution-22"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-79">
+        <label>Raktrul Ngawang Kunga Rinpoche (Pema Dorjee)</label>
+        <institution id="institution-67"/>
+        <team id="team-10"/>
+    </person>
+    <person xml:id="person-80">
+        <label>Rebecca Hufen</label>
+        <institution id="institution-68"/>
+        <team id="team-10"/>
+    </person>
+    <person xml:id="person-81">
+        <label>Jason Sanche</label>
+        <institution id="institution-69"/>
+        <team id="team-10"/>
+    </person>
+    <person xml:id="person-82">
+        <label>Shanshan Jia</label>
+        <institution id="institution-70"/>
+        <team id="team-10"/>
+    </person>
+    <person xml:id="person-83">
+        <label>Arne Schelling</label>
+        <institution id="institution-69"/>
+        <team id="team-10"/>
+    </person>
+    <person xml:id="person-84">
+        <label>David Rawson</label>
+        <institution id="institution-72"/>
+        <team id="team-13"/>
+    </person>
+    <person xml:id="person-85">
+        <label>Geshe Yama Rinchen</label>
+        <institution id="institution-72"/>
+        <team id="team-13"/>
+    </person>
+    <person xml:id="person-86">
+        <label>Karma Samten</label>
+        <institution id="institution-72"/>
+        <team id="team-13"/>
+    </person>
+    <person xml:id="person-87">
+        <label>Russell Shipman</label>
+        <institution id="institution-75"/>
+        <team id="team-13"/>
+    </person>
+    <person xml:id="person-88">
+        <label>Bjarke Aage</label>
+        <team id="team-13"/>
+    </person>
+    <person xml:id="person-90">
+        <label>Dr. Oliver von Criegern</label>
+        <institution id="institution-104"/>
+    </person>
+    
+    <person xml:id="person-92">
+        <label>Laura Goetz</label>
+        <team id="team-39"/>
+        <team id="team-41"/>
+        <team id="team-42"/>
+    </person>
+    <person xml:id="person-95">
+        <label>Celso Wilkinson</label>
+        <team id="team-39"/>
+        <team id="team-42"/>
+    </person>
+    <person xml:id="person-96">
+        <label>L.S. Summer</label>
+        <institution id="institution-110"/>
+        <team id="team-39"/>
+    </person>
+    <person xml:id="person-97">
+        <label>William Giddings</label>
+        <team id="team-39"/>
+    </person>
+    <person xml:id="person-99">
+        <label>Thomas Cruijsen</label>
+        <institution id="institution-84"/>
+        <team id="team-14"/>
+        <team id="team-40"/>
+    </person>
+    <person xml:id="person-100">
+        <label>Khenpo Chowang</label>
+        <institution id="institution-85"/>
+        <team id="team-14"/>
+    </person>
+    <person xml:id="person-101">
+        <label>Tashi Tenzing</label>
+        <institution id="institution-84"/>
+        <team id="team-14"/>
+    </person>
+    <person xml:id="person-102">
+        <label>H.E. Garchen Rinpoche</label>
+        <institution id="institution-87"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-103">
+        <label>Ven. Lama Gape</label>
+        <institution id="institution-87"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-104">
+        <label>Khenpo Könchog Mönlam</label>
+        <institution id="institution-89"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-105">
+        <label>Khenmo Trinlay Chödrön</label>
+        <institution id="institution-90"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-106">
+        <label>Ven. Lobsang Norbu Shastri</label>
+        <institution id="institution-91"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-107">
+        <label>Ven. Könchog Tharchin</label>
+        <institution id="institution-90"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-108">
+        <label>André Rodrigues</label>
+        <team id="team-42"/>
+    </person>
+    <person xml:id="person-109">
+        <label>Khenpo Gawang</label>
+        <institution id="institution-94"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-110">
+        <label>Khenpo Samdrub</label>
+        <institution id="institution-95"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-111">
+        <label>Ina Bieler</label>
+        <institution id="institution-87"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-112">
+        <label>Catherine J. Ondek</label>
+        <institution id="institution-97"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-113">
+        <label>Dr. Kay Candler</label>
+        <institution id="institution-98"/>
+        <team id="team-15"/>
+        <team id="team-24"/>
+        <team id="team-38"/>
+    </person>
+    <person xml:id="person-114">
+        <label>Prof. Dr. Sumanapala Galmangoda</label>
+        <institution id="institution-99"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-115">
+        <label>Dr. Karen Liljenberg</label>
+        <institution id="institution-14"/>
+        <team id="team-16"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-116">
+        <label>Dr. Ulrich Pagel</label>
+        <institution id="institution-14"/>
+        <team id="team-16"/>
+        <team id="team-3"/>
+    </person>
+    <person xml:id="person-117">
+        <label>Maurizio Pontiggia (Lama Tsering Wangchuk)</label>
+        <institution id="institution-101"/>
+        <team id="team-17"/>
+    </person>
+    <person xml:id="person-118">
+        <label>Chryse Tringos-Allen</label>
+        <institution id="institution-102"/>
+        <team id="team-17"/>
+    </person>
+    <person xml:id="person-119">
+        <label>Dr. Ariadni Gerouki</label>
+        <institution id="institution-101"/>
+        <team id="team-17"/>
+    </person>
+    <person xml:id="person-120">
+        <label>Cuilan Liu</label>
+        <institution id="institution-104"/>
+        <team id="team-18"/>
+    </person>
+    <person xml:id="person-121">
+        <label>Andrew Francis</label>
+        <institution id="institution-105"/>
+        <team id="team-18"/>
+    </person>
+    <person xml:id="person-122">
+        <label>Jamyang Rinchen</label>
+        <institution id="institution-106"/>
+        <team id="team-18"/>
+    </person>
+    <person xml:id="person-123">
+        <label>Ruth Gamble</label>
+        <institution id="institution-107"/>
+        <team id="team-19"/>
+    </person>
+    <person xml:id="person-124">
+        <label>Harmony DenRonden</label>
+        <institution id="institution-107"/>
+        <team id="team-19"/>
+    </person>
+    <person xml:id="person-125">
+        <label>John Powers</label>
+        <team id="team-19"/>
+    </person>
+    <person xml:id="person-126">
+        <label>Tenzin Ringpapontsang</label>
+        <institution id="institution-109"/>
+        <team id="team-19"/>
+    </person>
+    <person xml:id="person-127">
+        <label>Scott Wellenbach</label>
+        <institution id="institution-115"/>
+        <institution id="institution-123"/>
+        <team id="team-20"/>
+    </person>
+    <person xml:id="person-128">
+        <label>Acharya Lama Tenpa Gyaltsen</label>
+        <institution id="institution-110"/>
+        <team id="team-20"/>
+    </person>
+    <person xml:id="person-129">
+        <label>Larry Mermelstein</label>
+        <institution id="institution-115"/>
+        <team id="team-20"/>
+    </person>
+    <person xml:id="person-130">
+        <label>Jacqueline Connaughton</label>
+        <team id="team-20"/>
+    </person>
+    <person xml:id="person-131">
+        <label>Jessie Litven</label>
+        <team id="team-20"/>
+    </person>
+    <person xml:id="person-132">
+        <label>Ryan Jones</label>
+        <team id="team-20"/>
+    </person>
+    <person xml:id="person-133">
+        <label>David Birch</label>
+        <team id="team-20"/>
+    </person>
+    <person xml:id="person-134">
+        <label>Andy Karr</label>
+        <team id="team-20"/>
+    </person>
+    <person xml:id="person-135">
+        <label>Linda Lewis</label>
+        <institution id="institution-115"/>
+        <team id="team-20"/>
+    </person>
+    <person xml:id="person-136">
+        <label>Robert Vogler</label>
+        <team id="team-20"/>
+    </person>
+    <person xml:id="person-137">
+        <label>Pema Wangyal Rinpoche</label>
+        <institution id="institution-111"/>
+        <team id="team-21"/>
+    </person>
+    <person xml:id="person-138">
+        <label>Jigme Khyentse Rinpoche</label>
+        <institution id="institution-111"/>
+        <team id="team-21"/>
+    </person>
+    <person xml:id="person-139">
+        <label>Dr. John Canti</label>
+        <institution id="institution-113"/>
+        <team id="team-21"/>
+        <team id="team-40"/>
+    </person>
+    <person xml:id="person-140">
+        <label>Dr. Gyurme Dorje</label>
+        <institution id="institution-114"/>
+        <team id="team-21"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-141">
+        <label>Charles Hastings</label>
+        <institution id="institution-113"/>
+        <team id="team-21"/>
+    </person>
+    <person xml:id="person-142">
+        <label>Dr. Peter Alan Roberts</label>
+        <team id="team-22"/>
+    </person>
+    <person xml:id="person-143">
+        <label>Emily Bower</label>
+        <institution id="institution-115"/>
+        <team id="team-22"/>
+    </person>
+    <person xml:id="person-144">
+        <label>Guilaine Mala</label>
+        <institution id="institution-2"/>
+        <team id="team-22"/>
+    </person>
+    <person xml:id="person-145">
+        <label>Yeshe Tulku</label>
+        <institution id="institution-117"/>
+        <team id="team-22"/>
+    </person>
+    <person xml:id="person-146">
+        <label>Geoff Picus</label>
+        <team id="team-22"/>
+    </person>
+    <person xml:id="person-147">
+        <label>Ling-Lung Chen</label>
+        <institution id="institution-118"/>
+        <team id="team-22"/>
+    </person>
+    <person xml:id="person-148">
+        <label>His Holiness the Drikung Kyabgön Chetsang</label>
+        <institution id="institution-19"/>
+        <team id="team-24"/>
+    </person>
+    
+    <person xml:id="person-150">
+        <label>Khenpo Konchok Sherab</label>
+        <institution id="institution-26"/>
+        <team id="team-24"/>
+    </person>
+    <person xml:id="person-151">
+        <label>Acharya Shanta Kumar Negi</label>
+        <institution id="institution-122"/>
+        <team id="team-24"/>
+    </person>
+    
+    
+    
+    
+    <person xml:id="person-158">
+        <label>Dr. Robert Mayer</label>
+        <institution id="institution-2"/>
+        <team id="team-25"/>
+    </person>
+    <person xml:id="person-159">
+        <label>Dr. Cathy Cantwell</label>
+        <institution id="institution-2"/>
+        <team id="team-25"/>
+    </person>
+    <person xml:id="person-160">
+        <label>Khenpo Gyurme Tsultrim</label>
+        <institution id="institution-132"/>
+        <team id="team-25"/>
+    </person>
+    <person xml:id="person-161">
+        <label>Ven. Changling Rinpoche</label>
+        <institution id="institution-132"/>
+        <team id="team-25"/>
+    </person>
+    <person xml:id="person-162">
+        <label>Lopon P. Ogyan Tanzin</label>
+        <institution id="institution-91"/>
+        <team id="team-25"/>
+    </person>
+    <person xml:id="person-163">
+        <label>Lama Kunzang Dorje</label>
+        <institution id="institution-134"/>
+        <team id="team-25"/>
+    </person>
+    <person xml:id="person-164">
+        <label>Prof. Vesna Wallace</label>
+        <institution id="institution-135"/>
+        <team id="team-25"/>
+    </person>
+    <person xml:id="person-165">
+        <label>Robert Miller</label>
+        <institution id="institution-136"/>
+        <team id="team-26"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-166">
+        <label>Diana Finnegan (Ven. Lhundup Damchö)</label>
+        <team id="team-26"/>
+    </person>
+    <person xml:id="person-167">
+        <label>Dr. Fumi Yao</label>
+        <institution id="institution-16"/>
+        <team id="team-26"/>
+        <institution id="institution-15"/>
+        <team id="team-4"/>
+    </person>
+    <person xml:id="person-168">
+        <label>Haiyan Hu-von Hinüber</label>
+        <institution id="institution-138"/>
+        <team id="team-26"/>
+    </person>
+    <person xml:id="person-169">
+        <label>Matthew Wuethrich</label>
+        <institution id="institution-139"/>
+        <team id="team-26"/>
+    </person>
+    <person xml:id="person-170">
+        <label>Maurice Ozaine</label>
+        <institution id="institution-138"/>
+        <team id="team-26"/>
+    </person>
+    <person xml:id="person-171">
+        <label>Geshé Tséwang Nyima</label>
+        <institution id="institution-141"/>
+        <team id="team-26"/>
+    </person>
+    <person xml:id="person-172">
+        <label>Geshé Rinchen Ngödrup</label>
+        <institution id="institution-72"/>
+        <team id="team-26"/>
+    </person>
+    <person xml:id="person-173">
+        <label>Ven. Khenpo Kalsang Gyaltsen</label>
+        <institution id="institution-143"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-174">
+        <label>Ven. Dr. Khenpo Ngawang Jorden</label>
+        <institution id="institution-144"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-175">
+        <label>Rev. Dr. Chodrung Kunga</label>
+        <institution id="institution-145"/>
+        <institution id="institution-143"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-176">
+        <label>Ven. Lama Jampa Losal</label>
+        <institution id="institution-144"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-177">
+        <label>Dr. C. Upender Rao</label>
+        <institution id="institution-147"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-178">
+        <label>Yangchen Dolkar Tsatultsang</label>
+        <institution id="institution-144"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-179">
+        <label>Ven. Jampa Tenzing Bhutia</label>
+        <institution id="institution-144"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-180">
+        <label>Ven. Tashi Sangpo</label>
+        <institution id="institution-144"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-181">
+        <label>Ven. Ngawang Tenzin Gurung</label>
+        <institution id="institution-144"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-182">
+        <label>Christian Bernert</label>
+        <institution id="institution-144"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-183">
+        <label>Emma T. Cobb</label>
+        <institution id="institution-25"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-184">
+        <label>Julia C. Stenzel</label>
+        <institution id="institution-144"/>
+        <team id="team-27"/>
+    </person>
+    <person xml:id="person-185">
+        <label>Dr. Shenghai Li</label>
+        <institution id="institution-155"/>
+        <team id="team-28"/>
+    </person>
+    <person xml:id="person-186">
+        <label>Zhuo Siyu</label>
+        <institution id="institution-156"/>
+        <team id="team-28"/>
+    </person>
+    <person xml:id="person-187">
+        <label>Steven Rhodes</label>
+        <team id="team-28"/>
+    </person>
+    <person xml:id="person-188">
+        <label>Sonam Tsering</label>
+        <institution id="institution-5"/>
+        <team id="team-29"/>
+    </person>
+    <person xml:id="person-189">
+        <label>Norzin Dolma</label>
+        <team id="team-29"/>
+    </person>
+    <person xml:id="person-190">
+        <label>Steven Weinberger</label>
+        <institution id="institution-158"/>
+        <team id="team-30"/>
+    </person>
+    <person xml:id="person-192">
+        <label>Tenpa Tsering</label>
+        <institution id="institution-91"/>
+        <team id="team-31"/>
+    </person>
+    <person xml:id="person-193">
+        <label>Khentrul Gyurme Dorje</label>
+        <institution id="institution-161"/>
+        <team id="team-31"/>
+    </person>
+    <person xml:id="person-194">
+        <label>Davis A. Baltz</label>
+        <institution id="institution-162"/>
+        <team id="team-31"/>
+    </person>
+    <person xml:id="person-195">
+        <label>Jens Braarvig</label>
+        <institution id="institution-163"/>
+        <team id="team-32"/>
+    </person>
+    <person xml:id="person-196">
+        <label>David Welsh (Śraddhāpa Dharmacārī)</label>
+        <team id="team-32"/>
+    </person>
+    <person xml:id="person-197">
+        <label>Fredrik Liland</label>
+        <institution id="institution-163"/>
+        <team id="team-32"/>
+    </person>
+    <person xml:id="person-198">
+        <label>Andrew Skilton</label>
+        <institution id="institution-14"/>
+        <team id="team-32"/>
+    </person>
+    <person xml:id="person-199">
+        <label>Dr. Geshe Lozang Jamspal</label>
+        <institution id="institution-8"/>
+        <institution id="institution-5"/>
+        <team id="team-33"/>
+    </person>
+    <person xml:id="person-200">
+        <label>Kaia Fischer</label>
+        <institution id="institution-208"/>
+        <team id="team-33"/>
+    </person>
+    <person xml:id="person-201">
+        <label>Jake Nagasawa</label>
+        <institution id="institution-135"/>
+        <team id="team-34"/>
+    </person>
+    <person xml:id="person-202">
+        <label>Michael Ium</label>
+        <institution id="institution-135"/>
+        <team id="team-34"/>
+    </person>
+    <person xml:id="person-203">
+        <label>Jed Forman</label>
+        <institution id="institution-135"/>
+        <team id="team-34"/>
+    </person>
+    <person xml:id="person-204">
+        <label>Erdene Baatar Erdene-Ochir</label>
+        <institution id="institution-135"/>
+        <team id="team-34"/>
+    </person>
+    <person xml:id="person-205">
+        <label>Jaakko Takkinen</label>
+        <institution id="institution-135"/>
+        <team id="team-34"/>
+    </person>
+    <person xml:id="person-206">
+        <label>José I.Cabezón</label>
+        <institution id="institution-135"/>
+        <team id="team-34"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-207">
+        <label>James B. Apple Ph.D.</label>
+        <institution id="institution-174"/>
+        <team id="team-35"/>
+    </person>
+    <person xml:id="person-208">
+        <label>Shinobu A. Apple, Ph.D.</label>
+        <institution id="institution-174"/>
+        <team id="team-35"/>
+    </person>
+    <person xml:id="person-209">
+        <label>Prof. Frances Garrett</label>
+        <institution id="institution-176"/>
+        <team id="team-36"/>
+    </person>
+    <person xml:id="person-210">
+        <label>Khenpo Kunga Sherab</label>
+        <institution id="institution-176"/>
+        <team id="team-36"/>
+    </person>
+    <person xml:id="person-211">
+        <label>Dr. Gareth Sparham</label>
+        <institution id="institution-178"/>
+        <team id="team-36"/>
+    </person>
+    <person xml:id="person-212">
+        <label>Ben Wood</label>
+        <institution id="institution-176"/>
+        <team id="team-36"/>
+    </person>
+    <person xml:id="person-213">
+        <label>Amanda Goodman</label>
+        <institution id="institution-176"/>
+        <team id="team-36"/>
+    </person>
+    <person xml:id="person-214">
+        <label>Dr. Joshua Capitanio</label>
+        <institution id="institution-181"/>
+        <team id="team-37"/>
+    </person>
+    <person xml:id="person-215">
+        <label>Victor Gabriel</label>
+        <institution id="institution-181"/>
+        <team id="team-37"/>
+    </person>
+    <person xml:id="person-216">
+        <label>Dr. Miroj Shakya</label>
+        <institution id="institution-181"/>
+        <team id="team-37"/>
+    </person>
+    <person xml:id="person-217">
+        <label>Samantha Hung</label>
+        <institution id="institution-184"/>
+        <institution id="institution-207"/>
+        <team id="team-38"/>
+    </person>
+    <person xml:id="person-218">
+        <label>H.H. the Drikung Kyabgon Chetsang</label>
+        <institution id="institution-19"/>
+        <team id="team-38"/>
+    </person>
+    <person xml:id="person-219">
+        <label>Khenpo Nyima Gyaltsen</label>
+        <institution id="institution-186"/>
+        <team id="team-38"/>
+    </person>
+    <person xml:id="person-220">
+        <label>Nubpa Rinpoche</label>
+        <institution id="institution-187"/>
+        <team id="team-38"/>
+    </person>
+    <person xml:id="person-221">
+        <label>Khenpo Konchok Monlam</label>
+        <institution id="institution-186"/>
+        <team id="team-38"/>
+    </person>
+    <person xml:id="person-222">
+        <label>Tracy Howard</label>
+        <institution id="institution-5"/>
+        <team id="team-38"/>
+    </person>
+    
+    <person xml:id="person-224">
+        <label>Ven. Konchog Tharcin</label>
+        <institution id="institution-90"/>
+        <team id="team-38"/>
+    </person>
+    <person xml:id="person-225">
+        <label>Ven. Master Jian Deng</label>
+        <institution id="institution-93"/>
+        <team id="team-38"/>
+        <team id="team-15"/>
+    </person>
+    <person xml:id="person-226">
+        <label>David Gitlen</label>
+    </person>
+<person xml:id="person-227">
+        <label>Cortland Dahl</label>
+        <institution id="institution-46"/>
+    </person>
+    <person xml:id="person-228">
+        <label>Greg Seton</label>
+    </person>
+    <person xml:id="person-229">
+        <label>Jon Solomon</label>
+    </person>
+    <person xml:id="person-230">
+        <label>Tom Tillemans</label>
+        <institution id="institution-17"/>
+        <team id="team-40"/>
+    </person>
+    <person xml:id="person-231">
+        <label>Hilary Herdman</label>
+        <institution id="institution-51"/>
+    </person>
+    <person xml:id="person-232">
+        <label>Ben Gleason</label>
+        <institution id="institution-105"/>
+    </person>
+    <person xml:id="person-233">
+        <label>Ngawang Rinchen Gyaltsen</label>
+    </person>
+    <person xml:id="person-234">
+        <label>Tsewang Gyaltsen</label>
+    </person>
+    <person xml:id="person-235">
+        <label>William Tuladhar-Douglas</label>
+        <institution id="institution-188"/>
+    </person>
+    <person xml:id="person-236">
+        <label>Charles Manson</label>
+        <institution id="institution-2"/>
+    </person>
+    <person xml:id="person-237">
+        <label>Richard Gombrich</label>
+        <institution id="institution-2"/>
+    </person>
+    <person xml:id="person-238">
+        <label>Sanjukta Gupta</label>
+        <institution id="institution-2"/>
+    </person>
+    <person xml:id="person-239">
+        <label>Khenpo Ngawang Wöser</label>
+    </person>
+    <person xml:id="person-240">
+        <label>Jamyang Choesang</label>
+    </person>
+    <person xml:id="person-241">
+        <label>Kunsang Choepel</label>
+        <institution id="institution-144"/>
+    </person>
+    <person xml:id="person-242">
+        <label>Boyce Teoh</label>
+        <institution id="institution-144"/>
+    </person>
+    <person xml:id="person-243">
+        <label>Solvej Nielsen</label>
+    </person>
+    <person xml:id="person-244">
+        <label>Sonam Spitz</label>
+    </person>
+    <person xml:id="person-245">
+        <label>Pamela Gayle White</label>
+    </person>
+    <person xml:id="person-246">
+        <label>Vivian Paganuzzi</label>
+    </person>
+    <person xml:id="person-247">
+        <label>Gillian Parrish</label>
+    </person>
+    <person xml:id="person-248">
+        <label>Dzongsar Jamyang Khyentse Rinpoche</label>
+    </person>
+    <person xml:id="person-249">
+        <label>Konchog Norbu</label>
+        <team id="team-41"/>
+    </person>
+    <person xml:id="person-250">
+        <label>Rory Lindsay, Dr.</label>
+        <institution id="institution-135"/>
+        <team id="team-40"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-251">
+        <label>Nancy Lin, Dr.</label>
+        <institution id="institution-22"/>
+        <team id="team-40"/>
+    </person>
+    <person xml:id="person-252">
+        <label>Dion Blundell</label>
+        <team id="team-41"/>
+    </person>
+    <person xml:id="person-253">
+        <label>Michael Engle</label>
+        <team id="team-42"/>
+    </person>
+    <person xml:id="person-255">
+        <label>Chandika Maharjan</label>
+        <institution id="institution-110"/>
+        <team id="team-42"/>
+    </person>
+    <person xml:id="person-256">
+        <label>Douglas Duckworth</label>
+        <institution id="institution-190"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-257">
+        <label>Raynald Prévèreau</label>
+        <team id="team-41"/>
+    </person>
+    <person xml:id="person-258"><label>Dr. Adam Pearcey</label><institution id="institution-14"/><team id="team-47"/></person>
+    <person xml:id="person-259">
+        <label>Alak Zenkar Rinpoche</label>
+    </person>
+    <person xml:id="person-260">
+        <label>Seth Davis</label>
+    </person>
+    <person xml:id="person-261">
+        <label>Philippe Turenne</label>
+        <institution id="institution-49"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-262">
+        <label>David Higgins</label>
+        <institution id="institution-25"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-263">
+        <label>Anne Klein</label>
+        <institution id="institution-191"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-264">
+        <label>Klaus Dieter-Mathes</label>
+        <institution id="institution-25"/>
+        <team id="team-44"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-265">
+        <label>Konstantin Brockhausen</label>
+        <institution id="institution-25"/>
+        <team id="team-44"/>
+    </person>
+    <person xml:id="person-266">
+        <label>Susanne Fleischmann</label>
+        <institution id="institution-25"/>
+        <team id="team-44"/>
+    </person>
+    <person xml:id="person-267">
+        <label>Katrin Querl</label>
+        <institution id="institution-25"/>
+        <team id="team-44"/>
+    </person>
+    <person xml:id="person-268">
+        <label>Alexandra Sukhanova</label>
+        <institution id="institution-25"/>
+        <team id="team-44"/>
+    </person>
+    <person xml:id="person-269">
+        <label>Julika Weber</label>
+        <institution id="institution-25"/>
+        <team id="team-44"/>
+    </person>
+    <person xml:id="person-270">
+        <label>Jonas Doctor</label>
+        <team id="team-41"/>
+    </person>
+    <person xml:id="person-271">
+        <label>Karen Lang</label>
+        <institution id="institution-158"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-272">
+        <label>Yeshe Hegan</label>
+        <team id="team-41"/>
+    </person>
+    <person xml:id="person-273">
+        <label>Janna White</label>
+        <team id="team-41"/>
+    </person>
+    <person xml:id="person-274">
+        <label>Adam Krug</label>
+        <institution id="institution-135"/>
+    </person>
+    <person xml:id="person-275">
+        <label>Khenpo Tsultrim Lodrö</label>
+        <institution id="institution-192"/>
+    </person>
+    <person xml:id="person-276">
+        <label>Sara McClintock</label>
+        <institution id="institution-50"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-277">
+        <label>Cynthia Col</label>
+        <team id="team-41"/>
+    </person>
+    <person xml:id="person-278">
+        <label>Dominic Sur</label>
+        <institution id="institution-193"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-279">
+        <label>Bill Waldron</label>
+        <institution id="institution-194"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-280">
+        <label>Kammie Takahashi</label>
+        <institution id="institution-195"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-281">
+        <label>Paul Harrison</label>
+        <institution id="institution-196"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-282">
+        <label>Gavin Kilty</label>
+        <institution id="institution-197"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-283">
+        <label>Dan Hirshberg</label>
+        <institution id="institution-198"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-284">
+        <label>Vincent Eltschinger</label>
+        <institution id="institution-199"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-285">
+        <label>Per Sørensen</label>
+        <institution id="institution-200"/>
+        <team id="team-43"/>
+        <team id="team-45"/>
+    </person>
+    <person xml:id="person-286">
+        <label>Warner Belanger</label>
+        <institution id="institution-201"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-287">
+        <label>Andrew Quintman</label>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-288">
+        <label>Kurtis Schaeffer</label>
+        <institution id="institution-158"/>
+        <team id="team-43"/>
+    </person>
+    <person xml:id="person-289">
+        <label>Nathaniel Rich</label>
+        <institution id="institution-135"/>
+        <team id="team-40"/>
+    </person>
+    <person xml:id="person-290">
+        <label>Norman Guberman</label>
+        <team id="team-33"/>
+    </person>
+    <person xml:id="person-291">
+        <label>Zsuzsa Majer</label>
+        <institution id="institution-202"/>
+        <team id="team-46"/>
+    </person>
+    <person xml:id="person-292">
+        <label>Krisztina Teleki</label>
+        <institution id="institution-202"/>
+        <team id="team-46"/>
+    </person>
+    <person xml:id="person-293">
+        <label>Beáta Kakas</label>
+        <team id="team-46"/>
+    </person>
+    <person xml:id="person-294">
+        <label>Karma Dorje (Rabjampa)</label>
+        <institution id="institution-202"/>
+        <team id="team-46"/>
+    </person>
+    <person xml:id="person-295">
+        <label>Marcus Bingenheimer</label>
+        <institution id="institution-190"/>
+        <team id="team-2"/>
+    </person>
+    <person xml:id="person-296">
+        <label>Jordi Roig</label>
+        <institution id="institution-51"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-297">
+        <label>Michelle J. Sorenson</label>
+        <institution id="institution-203"/>
+        <team id="team-9"/>
+    </person>
+    <person xml:id="person-298">
+        <label>Stefan Schley</label>
+        <institution id="institution-204"/>
+        <team id="team-45"/>
+    </person>
+    <person xml:id="person-299">
+        <label>Lopön Tsöndrü</label>
+        <institution id="institution-27"/>
+        <team id="team-45"/>
+    </person>
+    <person xml:id="person-300">
+        <label>Lewis Doney</label>
+        <institution id="institution-205"/>
+        <team id="team-45"/>
+    </person>
+    <person xml:id="person-301">
+        <label>Patrick Carré</label>
+        <institution id="institution-206"/>
+        <team id="team-21"/>
+    </person>
+    <person xml:id="person-302">
+        <label>Sangseraima Ujeed</label>
+        <institution id="institution-2"/>
+        <team id="team-21"/>
+    </person>
+    <person xml:id="person-303">
+        <label>Eleanor Brunnen</label>
+        <team id="team-28"/>
+    </person>
+    <person xml:id="person-304">
+        <label>David R. Kittay</label>
+        <institution id="institution-6"/>
+        <institution id="institution-5"/>
+        <team id="team-33"/>
+    </person>
+    <person xml:id="person-305"><label>Stefan Mang</label><institution id="institution-51"/><team id="team-48"/></person>
+    <person xml:id="person-306">
+        <label>Simeon Joffe</label>
+        <team id="team-42"/>
+    </person>
+    <person xml:id="person-307">
+        <label>Sylviane Tillemans</label>
+        <team id="team-41"/>
+    </person>
+    <person xml:id="person-308">
+        <label>Erin Sperry</label>
+        <institution id="institution-5"/>
+        <team id="team-33"/>
+    </person>
+<person xml:id="person-309"><label>Doris Unterthurner</label><institution id="institution-25"/><team id="team-44"/></person><person xml:id="person-310"><label>Sarah Evers</label><team id="team-9"/></person><person xml:id="person-311"><label>Peter Woods</label><team id="team-48"/></person><person xml:id="person-312"><label>Nick Schmidt</label></person><person xml:id="person-313"><label>Laura Dainty</label><team id="team-9"/></person><person xml:id="person-314"><label>Joost Palenstijn</label><institution id="institution-51"/><team id="team-9"/></person></contributors>
