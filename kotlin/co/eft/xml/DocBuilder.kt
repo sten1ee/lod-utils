@@ -8,35 +8,39 @@ import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 
 class DocBuilder {
-    fun parse(fileName: String): Node.Doc {
+    fun build(fileName: String): Node.Doc {
         val xmlFile = File(fileName)
         val xmlDoc: Document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile)
-        return buildNodeDoc(xmlDoc, "<file-name:$fileName>")
+        return build("<file-name:$fileName>", xmlDoc)
     }
 
-    fun buildNodeDoc(xmlDoc: Document, nodeDocName: String): Node.Doc {
+    fun build(docName: String, xmlDoc: Document): Node.Doc {
         xmlDoc.documentElement.normalize()
-        val nodeDoc = Node.Doc(nodeDocName)
-        nodeDoc.element = xmlDoc.documentElement.translate(nodeDoc) as Node.Elem
-        return nodeDoc
+        return Node.Doc(docName).apply {
+            docElement = import(xmlDoc.documentElement) as Node.Elem?
+        }
     }
 
-    fun org.w3c.dom.Node.translate(parent: Node): Node =
-        when (this) {
-            is Text -> Node.Text(parent, textContent)
-            is Attr -> Node.Attr(parent, name, value)
+    /** Import corresponding src node as an attrib or child within _this_ node
+     *  (extension of co.eft.Node)
+     */
+    val TRIM_TEXT = true
+    fun Node.import(src: org.w3c.dom.Node): Node =
+        when (src) {
+            is Text -> Node.Text(this, src.textContent.let { if (TRIM_TEXT) it.trim() else it })
+            is Attr -> Node.Attr(this, src.name, src.value)
             is Element -> {
-                Node.Elem(parent, nodeName).apply {
-                    setAttribs((0 until attributes.length).map { attributes.item(it).translate(this) as Node.Attr })
-                    setChildren((0 until childNodes.length).map { childNodes.item(it).translate(this) })
+                Node.Elem(this, src.nodeName).apply {
+                    setAttribs((0 until src.attributes.length).map { import(src.attributes.item(it)) as Node.Attr })
+                    setChildren((0 until src.childNodes.length).map { import(src.childNodes.item(it)) })
                 }
             }
-            else -> null!!
+            else -> throw IllegalStateException("Unexpected object type: ${src::class}")
         }
 }
 
 
 fun main(args: Array<String>) {
-    val doc = DocBuilder().parse("contributors/contributors.xml")
+    val doc = DocBuilder().build("contributors/contributors.xml")
     println(doc)
 }

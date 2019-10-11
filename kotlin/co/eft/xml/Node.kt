@@ -1,8 +1,6 @@
 package co.eft.xml
 
 import co.eft.util.filter
-//import java.lang.Exception
-//import java.lang.IllegalStateException
 
 sealed class Node(open val parent: Node?, internal val name: String) {
 
@@ -11,7 +9,13 @@ sealed class Node(open val parent: Node?, internal val name: String) {
 
     class Doc(name: String) : Node(null, name) {
 
-        var element: Elem? = null
+        private var _docElement: Elem? = null
+        var docElement: Elem?
+            get() = _docElement
+            set(elem) {
+                require (_docElement == null) { "Should only be invoked on Doc under construction!" }
+                _docElement = elem
+            }
     }
 
     class Elem(override val parent: Node, name: String) : Node(parent, name) {
