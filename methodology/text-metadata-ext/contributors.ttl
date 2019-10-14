@@ -24,9 +24,9 @@ eft:Consultant
   rdfs:label "A Consultan is a contributor, usually an expert in the source language and domain, who Authors and Editors may consult in order to do their work better"@en ;
   .
 
-##########################################################
-# instances of Author, Editor and Consultant start here: #
-##########################################################
+#
+# instances of Author, Editor and Consultant start here:
+#
 
 eft:author/translatorEng
   a eft:Author
@@ -76,4 +76,97 @@ eft:editor/proofreader
 eft:editor/finalReviewer
   a eft:Editor
   rdfs:label "Final Editor"@en;
+  .
+
+
+#####################################################################
+# contributors.xml comprises of
+# these kinds of entities and relationsperson between them:
+# team/person/institution/institution-type/region
+#
+# Following is an example rdf export of it.
+#####################################################################
+eft:affiliatedWith
+  a owl:ObjectProperty ;
+  .
+
+eft:affiliatedWithInstitution
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf eft:affiliatedWith ;
+  rdfs:range eft:Institution ;
+  .
+
+eft:partOfTeam
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf eft:affiliatedWith ;
+  rdfs:domain eft:TranslationContributor ;
+  rdfs:range eft:TranslatorsTeam ;
+  .
+#########################################
+
+eft:person-5
+  a eft:TranslationContributor ;
+  rdfs:label "Annie Bien"@en ;
+  eft:affiliatedWithInstitution eft:institution-5 ;
+  eft:partOfTeam eft:team-2 ;
+  .
+
+eft:person-7
+  a eft:TranslationContributor ;
+  rdfs:label "Dr. Paul Hackett"@en ;
+  eft:affiliatedWithInstitution eft:institution-5 ;
+  eft:affiliatedWithInstitution eft:institution-8 ;
+  eft:partOfTeam eft:team-2 ;
+  eft:partOfTeam eft:team-43 ;
+  .
+
+eft:Institution #########################
+  a owl:Class ;
+  .
+
+eft:institution-5
+  a eft:Institution ;
+  rdfs:label "Columbia University"@en ;
+  eft:locatedInRegion eft:region-1 ;
+  ;
+
+eft:institution-8
+  a eft:Institution ;
+  rdfs:label "International Buddhist College"@en ;
+  eft:locatedInRegion eft:region-5 ;
+  ;
+
+eft:Region ##############################
+  a owl:Class ;
+  .
+
+eft:region-1
+  a eft:WorldRegion ;
+  rdfs:label "North America"@en ;
+  ;
+
+eft:region-5
+  a eft:WorldRegion ;
+  rdfs:label "Other"@en ;
+  ;
+
+eft:TranslatorsTeam #####################
+  a owl:Class ;
+  .
+
+eft:team-2
+  a eft:TranslatorsTeam ;
+  rdfs:label "Annie Bien and team"@en ;
+  .
+
+eft:team-43
+  a eft:TranslatorsTeam ;
+  rdfs:label "84000 Reviewers"@en ;
+  eft:hiddenTeam "true"^^xsd:boolean ;
+  .
+
+eft:hiddenTeam
+  a owl:DataProperty ;
+  rdfs:domain eft:TranslationContributor ;
+  rdfs:range xsd:boolean ;
   .

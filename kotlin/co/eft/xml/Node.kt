@@ -55,11 +55,25 @@ sealed class Node(open val parent: Node?, internal val name: String) {
         infix fun attr(attr_name: String): String? = attribs[attr_name]?.value
 
         // Provide for attr access like this: elem["attr_name"]
-        fun get(attr_name: String): String? = attribs[attr_name]?.value
+        operator fun get(attr_name: String): String? = attribs[attr_name]?.value
 
-        fun set(attr_name: String, attr_value: String): String {
+        operator fun set(attr_name: String, attr_value: String): String {
             (attribs as MutableMap)[attr_name] = Attr(this, attr_name, attr_value)
             return attr_value
+        }
+
+        operator fun  rem(attrName: String): String = attribs[attrName]!!.value
+
+        operator fun  div(childElementName: String): Elem = children(childElementName).single() as Elem
+        operator fun  times(childElementName: String): Iterable<Elem> = children(childElementName) as Iterable<Elem>
+
+        operator fun  div(ch: Char): String {
+            require(ch == '#') { "Only '#' is supported !" }
+            return (children("#text").single() as Text).value
+        }
+        operator fun  times(ch: Char): Iterable<Text> {
+            require(ch == '#') { "Only '#' is supported !" }
+            return (children("#text") as Iterable<Text>)
         }
 
         fun allChildren(): Iterable<Node> = Iterable() {
