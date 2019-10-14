@@ -1,9 +1,28 @@
-# original source location:
+#####################################################################
+# Original source location:
 # /db/apps/84000-data/config/contributor-types.xml
+#
+# contributor-types.xml contains translation contributor roles
+# The 3 main types are: Author, Editor and Consultant.
+#
+# Further there are 2 author subtypes and 7 editor subtypes.
+#
+# The approach takes is:
+# Render the main types as ('abstract') owl:Class(es) and
+# their subtypes - as instances of those classes.
+# Then let each person/contributor have (possibly multiple)
+# eft:contributorRole(s) for a specific text entity/translation.
+#
+# Here is an example rdf export following this approach:
+#####################################################################
+
+#
+# 'abstract' owl:Class(es): Author, Editor and Consultant:
+#
 
 eft:TranslationContributor
   a owl:Class ;
-  rdfs:label "There are a handfull of instances of this class, representing different roles of involvement with a translation of a particular text"@en ;
+  rdfs:label "There are a handful of instances of this class, representing different roles of involvement with a translation of a particular text"@en ;
   .
 
 eft:Author
@@ -21,11 +40,11 @@ eft:Editor
 eft:Consultant
   a owl:Class ;
   rdfs:subClassOf eft:TranslationContributor ;
-  rdfs:label "A Consultan is a contributor, usually an expert in the source language and domain, who Authors and Editors may consult in order to do their work better"@en ;
+  rdfs:label "A Consultant is a contributor, usually an expert in the source language and domain, who Authors and Editors may consult in order to do their work better"@en ;
   .
 
 #
-# instances of Author, Editor and Consultant start here:
+# instances of Author, Editor and Consultant:
 #
 
 eft:author/translatorEng
@@ -80,8 +99,11 @@ eft:editor/finalReviewer
 
 
 #####################################################################
+# Original source location:
+# /db/apps/84000-data/operations/contributors.xml
+#
 # contributors.xml comprises of
-# these kinds of entities and relationsperson between them:
+# these kinds of entities and relationships between them:
 # team/person/institution/institution-type/region
 #
 # Following is an example rdf export of it.
