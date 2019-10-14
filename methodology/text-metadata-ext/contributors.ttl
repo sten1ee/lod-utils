@@ -7,7 +7,7 @@
 #
 # Further there are 2 author subtypes and 7 editor subtypes.
 #
-# The approach takes is:
+# The approach taken is:
 # Render the main types as ('abstract') owl:Class(es) and
 # their subtypes - as instances of those classes.
 # Then let each person/contributor have (possibly multiple)
