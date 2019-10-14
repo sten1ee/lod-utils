@@ -38,9 +38,3 @@ class DocBuilder {
             else -> throw IllegalStateException("Unexpected object type: ${src::class}")
         }
 }
-
-
-fun main(args: Array<String>) {
-    val doc = DocBuilder().build("contributors/contributors.xml")
-    println(doc)
-}
