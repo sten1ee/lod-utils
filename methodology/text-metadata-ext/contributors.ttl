@@ -28,19 +28,19 @@ eft:TranslationContributor
 eft:Author
   a owl:Class ;
   rdfs:subClassOf eft:TranslationContributor ;
-  rdfs:label "An Author is a contributor who creates new content (as opposed to editing existing one) in the target language"@en ;
+  rdfs:comment "An Author is a contributor who creates new content (as opposed to editing existing one) in the target language"@en ;
   .
 
 eft:Editor
   a owl:Class ;
   rdfs:subClassOf eft:TranslationContributor ;
-  rdfs:label "An Editor is a contributor who works on the output of an Author"@en ;
+  rdfs:comment "An Editor is a contributor who works on the output of an Author"@en ;
   .
 
 eft:Consultant
   a owl:Class ;
   rdfs:subClassOf eft:TranslationContributor ;
-  rdfs:label "A Consultant is a contributor, usually an expert in the source language and domain, who Authors and Editors may consult in order to do their work better"@en ;
+  rdfs:comment "A Consultant is a contributor, usually an expert in the source language and domain, who Authors and Editors may consult in order to do their work better"@en ;
   .
 
 #
@@ -48,53 +48,53 @@ eft:Consultant
 #
 
 eft:author/translatorEng
-  a eft:Author
-  rdfs:label "English Translator"@en;
+  a eft:Author ;
+  rdfs:label "English Translator"@en ;
   .
 
 eft:author/preface
-  a eft:Author
-  rdfs:label "Preface Author"@en;
+  a eft:Author ;
+  rdfs:label "Preface Author"@en ;
   .
 
 eft:consultant/advisor
-  a eft:Consultant
-  rdfs:label "Advising Consultant"@en;
+  a eft:Consultant ;
+  rdfs:label "Advising Consultant"@en ;
   .
 
 eft:editor/reviser
-  a eft:Editor
-  rdfs:label "Translation Team Editor"@en;
+  a eft:Editor ;
+  rdfs:label "Translation Team Editor"@en ;
   .
 
 eft:editor/associateEditor
-  a eft:Editor
-  rdfs:label "Associate Editor"@en;
+  a eft:Editor ;
+  rdfs:label "Associate Editor"@en ;
   .
 
 eft:editor/externalReviewer
-  a eft:Editor
-  rdfs:label "External Reviewer"@en;
+  a eft:Editor ;
+  rdfs:label "External Reviewer"@en ;
   .
 
 eft:editor/copyEditor
-  a eft:Editor
-  rdfs:label "Copy Editor"@en;
+  a eft:Editor ;
+  rdfs:label "Copy Editor"@en ;
   .
 
 eft:editor/TEImarkupEditor
-  a eft:Editor
-  rdfs:label "Markup Editor"@en;
+  a eft:Editor ;
+  rdfs:label "Markup Editor"@en ;
   .
 
 eft:editor/proofreader
-  a eft:Editor
-  rdfs:label "Proofreader"@en;
+  a eft:Editor ;
+  rdfs:label "Proofreader"@en ;
   .
 
 eft:editor/finalReviewer
-  a eft:Editor
-  rdfs:label "Final Editor"@en;
+  a eft:Editor ;
+  rdfs:label "Final Editor"@en ;
   .
 
 
