@@ -1,3 +1,11 @@
+@prefix eft: <http://84000.co/ontology/core/> .
+@prefix bdo: <http://purl.bdrc.io/ontology/core/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
 #####################################################################
 # Original source location:
 # /db/apps/84000-data/config/contributor-types.xml
@@ -47,52 +55,52 @@ eft:Consultant
 # instances of Author, Editor and Consultant:
 #
 
-eft:author/translatorEng
+eft:author.translatorEng
   a eft:Author ;
   rdfs:label "English Translator"@en ;
   .
 
-eft:author/preface
+eft:author.preface
   a eft:Author ;
   rdfs:label "Preface Author"@en ;
   .
 
-eft:consultant/advisor
+eft:consultant.advisor
   a eft:Consultant ;
   rdfs:label "Advising Consultant"@en ;
   .
 
-eft:editor/reviser
+eft:editor.reviser
   a eft:Editor ;
   rdfs:label "Translation Team Editor"@en ;
   .
 
-eft:editor/associateEditor
+eft:editor.associateEditor
   a eft:Editor ;
   rdfs:label "Associate Editor"@en ;
   .
 
-eft:editor/externalReviewer
+eft:editor.externalReviewer
   a eft:Editor ;
   rdfs:label "External Reviewer"@en ;
   .
 
-eft:editor/copyEditor
+eft:editor.copyEditor
   a eft:Editor ;
   rdfs:label "Copy Editor"@en ;
   .
 
-eft:editor/TEImarkupEditor
+eft:editor.TEImarkupEditor
   a eft:Editor ;
   rdfs:label "Markup Editor"@en ;
   .
 
-eft:editor/proofreader
+eft:editor.proofreader
   a eft:Editor ;
   rdfs:label "Proofreader"@en ;
   .
 
-eft:editor/finalReviewer
+eft:editor.finalReviewer
   a eft:Editor ;
   rdfs:label "Final Editor"@en ;
   .
@@ -146,17 +154,23 @@ eft:Institution #########################
   a owl:Class ;
   .
 
+eft:locatedInRegion
+  a owl:ObjectProperty ;
+  rdfs:domain eft:Institution ;
+  rdfs:range eft:Region ;
+  .
+
 eft:institution-5
   a eft:Institution ;
   rdfs:label "Columbia University"@en ;
   eft:locatedInRegion eft:region-1 ;
-  ;
+  .
 
 eft:institution-8
   a eft:Institution ;
   rdfs:label "International Buddhist College"@en ;
   eft:locatedInRegion eft:region-5 ;
-  ;
+  .
 
 eft:Region ##############################
   a owl:Class ;
@@ -165,12 +179,12 @@ eft:Region ##############################
 eft:region-1
   a eft:WorldRegion ;
   rdfs:label "North America"@en ;
-  ;
+  .
 
 eft:region-5
   a eft:WorldRegion ;
   rdfs:label "Other"@en ;
-  ;
+  .
 
 eft:TranslatorsTeam #####################
   a owl:Class ;
