@@ -116,7 +116,7 @@ eft:editor.finalReviewer
 # these kinds of entities and relationships between them:
 # team/person/institution/institution-type/region
 #
-# Following is an example rdf export of it.
+# Following is an example rdf export of just a tiny portion of it.
 #####################################################################
 eft:affiliatedWith
   a owl:ObjectProperty ;
