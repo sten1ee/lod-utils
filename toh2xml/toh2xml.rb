@@ -99,6 +99,54 @@ class  ForwardThinkingConverter < Toh2xml
 end
 
 
+class  HallowmasConverter < Toh2xml
+private
+
+  HEADER_LINE = 'idx,rkts,abstractI,abstractT,expr'.freeze
+  REF_TYPES = %w[bdrc-idx rkts-work-id bdrc-work-id bdrc-tibetan-id bdrc-derge-id].freeze
+
+  def parse_csv_line(line)
+    line = line.chomp
+    @lines_in += 1
+
+    if @lines_in == 1
+      if line != HEADER_LINE
+        raise(ArgumentError, "line 1: Wrong header line: got: '#{line}', expected: '#{HEADER_LINE}'")
+      end
+    else
+      vals = line.split(',').map { |val| val.gsub(/^\s*"|"\s*$/, '') }
+      raise ArgumentError, "line #{@lines_in}: Unexpected line format: '#{line}'" if vals.size != REF_TYPES.size
+      idx = vals[0]
+      raise ArgumentError, "line #{@lines_in}: Duplicate idx: #{line}" if @map.has_key? idx
+
+      @map[idx] = vals if idx != 'idx' # skip the 1st, header line
+    end
+  end
+
+  def render_xml_header(out)
+    out << <<~XML
+            <?xml version='1.0' encoding='utf-8'?>
+            <text-refs xmlns="http://read.84000.co/ns/1.0">
+    XML
+    @lines_out += 2
+  end
+
+  def render_xml_item(out, idx, vals)
+    out << "    <text key='toh#{idx}'>\n"
+    REF_TYPES.each_with_index do |ref_type, i|
+      out << "        <ref type='#{ref_type}' value='#{vals[i]}'/>\n"
+    end
+    out << "    </text>\n"
+    @lines_out += 2 + REF_TYPES.size
+  end
+
+  def render_xml_footer(out)
+    out << '</text-refs>\n'
+    @lines_out += 1
+  end
+end
+
+
 if __FILE__ == $PROGRAM_NAME
   puts "ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL} running"
   puts "command line: #{$PROGRAM_NAME} #{ARGV.join}"
@@ -106,7 +154,7 @@ if __FILE__ == $PROGRAM_NAME
   raise ArgumentError, "Missing command line arg for input file name!" if ARGV.size < 1
   raise ArgumentError, "Not a .csv file name specified - '#{ARGV[0]}'" if not ARGV[0].end_with?('.csv')
 
-  conversion = ForwardThinkingConverter.convert(csv_file_name: ARGV[0])
+  conversion = HallowmasConverter.convert(csv_file_name: ARGV[0])
   puts "#{conversion.lines_in} lines read from file #{conversion.input_file_name}"
   puts "#{conversion.lines_out} lines written to file #{conversion.output_file_name}"
 end
