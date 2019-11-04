@@ -156,14 +156,30 @@ private
 end
 
 
+def error_and_exit(err_msg)
+  raise ArgumentError, err_msg +
+  "\nUsage: #{$PROGRAM_NAME} (Toh2xml|ForwardThinkingConverter|HallowmasConverter)? <csv_file>"
+end
+
+def converter_class(argv)
+  return HallowmasConverter if argv.size == 1
+
+  begin
+    return Object.const_get(argv[0])
+  rescue  NameError => err
+    error_and_exit "Unknown convertor class: #{argv[0]}"
+  end
+end
+
 if __FILE__ == $PROGRAM_NAME
   puts "ruby #{RUBY_VERSION}p#{RUBY_PATCHLEVEL} running"
-  puts "command line: #{$PROGRAM_NAME} #{ARGV.join}"
-  raise ArgumentError, "Too many command line args!" if ARGV.size > 1
-  raise ArgumentError, "Missing command line arg for input file name!" if ARGV.size < 1
-  raise ArgumentError, "Not a .csv file name specified - '#{ARGV[0]}'" if not ARGV[0].end_with?('.csv')
+  puts "command line: #{$PROGRAM_NAME} #{ARGV.join ' '}"
+  error_and_exit "Too many command line args!" if ARGV.size > 2
+  error_and_exit "Missing argument for csv file name!" if ARGV.size < 1
+  error_and_exit "Expecting a .csv file name, got: '#{ARGV.last}'" if not ARGV.last.end_with?('.csv')
 
-  conversion = HallowmasConverter.convert(csv_file_name: ARGV[0])
+  Converter = converter_class(ARGV)
+  conversion = Converter.convert(csv_file_name: ARGV.last)
   puts "#{conversion.lines_in} lines read from file #{conversion.input_file_name}"
   puts "#{conversion.lines_out} lines written to file #{conversion.output_file_name}"
 end
