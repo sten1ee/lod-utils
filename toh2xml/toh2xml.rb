@@ -11,9 +11,9 @@ class Toh2xml
   end  
 
   def convert(csv_file_name)
-    parse_csv_file csv_file_name
+    parse_csv_file(csv_file_name)
     @map = @map.sort_by { |key, val| key.to_i }.to_h
-    render_xml_file csv_file_name.sub(/.csv$/, '.xml')
+    render_xml_file(csv_file_name.sub(/.csv$/, '.xml'))
     self
   end
 
@@ -24,7 +24,7 @@ class Toh2xml
     @lines_in = 0
 
     File.open(input_file_name).each_line do |line|
-      parse_csv_line line
+      parse_csv_line(line)
     end
   end
 
@@ -104,9 +104,9 @@ if __FILE__ == $PROGRAM_NAME
   puts "command line: #{$PROGRAM_NAME} #{ARGV.join}"
   raise ArgumentError, "Too many command line args!" if ARGV.size > 1
   raise ArgumentError, "Missing command line arg for input file name!" if ARGV.size < 1
-  raise ArgumentError, "Not a .csv file name specified - '#{ARGV[0]}'" if not ARGV[0].end_with? '.csv'
+  raise ArgumentError, "Not a .csv file name specified - '#{ARGV[0]}'" if not ARGV[0].end_with?('.csv')
 
-  conversion = ForwardThinkingConverter.convert csv_file_name: ARGV[0]
+  conversion = ForwardThinkingConverter.convert(csv_file_name: ARGV[0])
   puts "#{conversion.lines_in} lines read from file #{conversion.input_file_name}"
   puts "#{conversion.lines_out} lines written to file #{conversion.output_file_name}"
 end
