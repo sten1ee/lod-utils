@@ -1,6 +1,5 @@
 package co.eft.xml
 
-import co.eft.util.filter
 
 sealed class Node(open val parent: Node?, internal val name: String) {
 
@@ -10,12 +9,14 @@ sealed class Node(open val parent: Node?, internal val name: String) {
     class Doc(name: String) : Node(null, name) {
 
         private var _docElement: Elem? = null
-        var docElement: Elem?
-            get() = _docElement
-            set(elem) {
-                require (_docElement == null) { "Should only be invoked on Doc under construction!" }
-                _docElement = elem
-            }
+
+        fun setDocElement(elem: Elem) {
+            require (_docElement == null) { "Should only be invoked on Doc under construction!" }
+            _docElement = elem
+        }
+
+        val docElement: Elem
+            get() = _docElement!!
     }
 
     class Elem(override val parent: Node, name: String) : Node(parent, name) {
@@ -52,7 +53,7 @@ sealed class Node(open val parent: Node?, internal val name: String) {
             children.addAll(group)
         }
 
-        infix fun attr(attr_name: String): String? = attribs[attr_name]?.value
+        infix fun attr(attr_name: String): String = attribs[attr_name]!!.value
 
         // Provide for attr access like this: elem["attr_name"]
         operator fun get(attr_name: String): String? = attribs[attr_name]?.value
@@ -65,35 +66,35 @@ sealed class Node(open val parent: Node?, internal val name: String) {
         operator fun  rem(attrName: String): String = attribs[attrName]!!.value
 
         operator fun  div(childElementName: String): Elem = children(childElementName).single() as Elem
-        operator fun  times(childElementName: String): Iterable<Elem> = children(childElementName) as Iterable<Elem>
+        operator fun  times(childElementName: String): Sequence<Elem> = children(childElementName) as Sequence<Elem>
 
         operator fun  div(ch: Char): String {
             require(ch == '#') { "Only '#' is supported !" }
             return (children("#text").single() as Text).value
         }
-        operator fun  times(ch: Char): Iterable<Text> {
+        operator fun  times(ch: Char): Sequence<Text> {
             require(ch == '#') { "Only '#' is supported !" }
-            return (children("#text") as Iterable<Text>)
+            return children("#text") as Sequence<Text>
         }
 
-        fun allChildren(): Iterable<Node> = Iterable() {
-            -> children.iterator()
-        }
+        fun allChildren(): Sequence<Node> = children.asSequence()
 
-        fun children(child_name: String): Iterable<Node> = Iterable() {
-            -> children.iterator().filter { elem -> elem.name == child_name }
-        }
+        fun elementsChildren(): Sequence<Elem> = children.asSequence().filter { it is Elem } as Sequence<Elem>
 
-        fun children(child_name_re: Regex): Iterable<Node> = Iterable() {
-            -> children.iterator().filter { elem -> child_name_re.matches(elem.name) }
-        }
+        fun children(child_name: String): Sequence<Node> =
+            children.asSequence().filter { elem -> elem.name == child_name }
+
+        fun children(child_name_re: Regex): Sequence<Node> =
+            children.asSequence().filter { elem -> child_name_re.matches(elem.name) }
+
+        override fun toString() = "<$name ..."
     }
 
     class Attr(parent: Node, name: String, val value: String) : Node(parent, name) {
-        override fun toString(): String = "$name=$value"
+        override fun toString() = "$name=$value"
     }
 
     class Text(parent: Node, val value: String) : Node(parent, "#text") {
-        override fun toString(): String = "#text:$value"
+        override fun toString() = "#text:'$value'"
     }
 }

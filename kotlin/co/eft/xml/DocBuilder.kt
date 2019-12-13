@@ -17,7 +17,7 @@ class DocBuilder {
     fun build(docName: String, xmlDoc: Document): Node.Doc {
         xmlDoc.documentElement.normalize()
         return Node.Doc(docName).apply {
-            docElement = import(xmlDoc.documentElement) as Node.Elem?
+            setDocElement(import(xmlDoc.documentElement) as Node.Elem)
         }
     }
 
