@@ -14,7 +14,7 @@ enum class Type {
     DBIT
 }
 
-private fun String.toType() = Type.valueOf(this)
+private inline fun <reified T : Enum<T>> String.toEnum(): T = enumValueOf(this)
 
 data class Entry(val amount: Double, val n3ref: String?, val type: Type, val description: String, val src: Account, val dst: Account) {
 
@@ -22,7 +22,7 @@ data class Entry(val amount: Double, val n3ref: String?, val type: Type, val des
         :this(
             (n3/"Amt"/'#').toDouble(),
             (n3/"(NtryRef)?"/'#'),
-            (n3/"CdtDbtInd"/'#').toType(),
+            (n3/"CdtDbtInd"/'#').toEnum<Type>(),
             (n3/"NtryDtls"/"TxDtls"/"RmtInf"/"Ustrd"/'#'),
             Account("srcAccountOf(n3)"), Account("dstAccountOf(n3))"))
 }
