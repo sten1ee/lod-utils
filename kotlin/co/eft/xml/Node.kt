@@ -3,7 +3,7 @@ package co.eft.xml
 import java.util.NoSuchElementException
 
 
-sealed class Node(open val parent: Node?, internal val name: String) {
+sealed class Node(open val parent: Node?, open val name: String, open val value: String) {
 
     val isRoot: Boolean
         get() = parent == null
@@ -11,7 +11,7 @@ sealed class Node(open val parent: Node?, internal val name: String) {
     open val textValue: String
         get() = "<undefined textValue>"
 
-    class Doc(name: String) : Node(null, name) {
+    class Doc(name: String) : Node(parent=null, name="<<Doc_URI=$name>>", value="<<The_Doc_Itself>>") {
 
         private var _docElement: Elem? = null
 
@@ -24,7 +24,7 @@ sealed class Node(open val parent: Node?, internal val name: String) {
             get() = _docElement!!
     }
 
-    class Elem(override val parent: Node, name: String) : Node(parent, name) {
+    class Elem(override val parent: Node, name: String) : Node(parent, name, value="$name") {
         val attribs: Map<String, Attr> = LinkedHashMap<String, Attr>()
         val children: MutableList<Node> = mutableListOf<Node>()
 
@@ -68,22 +68,44 @@ sealed class Node(open val parent: Node?, internal val name: String) {
             return attr_value
         }
 
-        private fun nullElem(elemName: String) = Elem(this, "<null $elemName>")
-        private fun isNullElem() = name.startsWith("<null ") && name.endsWith('>')
+        private fun nullElem(elemName: String) = Elem(parent=this, name="<<null $elemName>>")
+        private fun nullText() = Text(parent=this, value="<<null #>>")
+        private fun isNullElem() = name.startsWith("<<null ") && name.endsWith(">>")
 
-        operator fun  div(elementName: String): Elem {
-            val optional = elementName.startsWith('(') && elementName.endsWith(")?")
+        operator fun  div(xpath: String) = evalXpath(xpath.split('/'))
+
+        fun  evalXpath(xpath: List<String>, cur: Int=0): Node {
+            if (cur >= xpath.size)
+                return this
+
+            val elemName = xpath[cur]
+            val optional = elemName.startsWith('(') && elemName.endsWith(")?")
             val actualName = (if (optional)
-                                 elementName.substring(1, elementName.length - 2)
+                                 elemName.substring(1, elemName.length - 2)
                               else
-                                 elementName)
+                                 elemName)
+
+            if (actualName == "#") {
+                require(cur + 1 == xpath.size) { "/# must be the last component of a xpath but is not: $xpath" }
+                if (isNullElem())
+                    return nullText()
+
+                with (children("#")) {
+                    if (any())
+                        return single() as Text
+                    else if (optional)
+                        return nullText()
+                    else
+                        throw NoSuchElementException("No '#' child element in xpath: $xpath")
+                }
+            }
             with (children(actualName)) {
                 if (any())
-                    return single() as Elem
+                    return (single() as Elem).evalXpath(xpath, cur + 1)
                 else if (optional)
                     return nullElem(actualName)
                 else
-                    throw NoSuchElementException("No '$actualName' child element.")
+                    throw NoSuchElementException("No '$actualName' child element in xpath: $xpath")
             }
         }
 
@@ -94,6 +116,7 @@ sealed class Node(open val parent: Node?, internal val name: String) {
                 else
                     null
             }
+
         operator fun  times(childElementName: String): Sequence<Elem> = children(childElementName) as Sequence<Elem>
 
         operator fun  div(ch: Char): String {
@@ -125,14 +148,14 @@ sealed class Node(open val parent: Node?, internal val name: String) {
 
     }
 
-    class Attr(parent: Node, name: String, val value: String) : Node(parent, name) {
+    class Attr(parent: Node, name: String, value: String) : Node(parent, name, value) {
         override fun toString() = "$name=$value"
 
         override val textValue: String
             get() = value
     }
 
-    class Text(parent: Node, val value: String) : Node(parent, "#text") {
+    class Text(parent: Node, value: String) : Node(parent, name="#", value=value) {
         override fun toString() = "#text:'$value'"
 
         override val textValue: String

@@ -19,7 +19,7 @@ fun main(args: Array<String>) {
        .filter { it.name == "person" }
        .forEach {
            val id = it["xml:id"]
-           val name = it/"label"/'#'
+           val name = (it/"label/#").value
            println("""person[${i++}]: id=$id, name='$name""")
        }
 }

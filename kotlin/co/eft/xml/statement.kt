@@ -1,13 +1,10 @@
 package co.eft.xml
 
 fun main(args: Array<String>) {
-    val re = Regex("[^\\p{L}\\d\\s.,‘’()/-]")
-
     processStatementFile("/Users/stenlee/Downloads/statement-2019-11.xml")
 }
 
-data class Account(val iban: String) {
-}
+data class Account(val name: String)
 
 enum class Type {
     CRDT,
@@ -16,15 +13,19 @@ enum class Type {
 
 private inline fun <reified T : Enum<T>> String.toEnum(): T = enumValueOf(this)
 
+private fun Node.toAccount() = Account(textValue)
+
 data class Entry(val amount: Double, val n3ref: String?, val type: Type, val description: String, val src: Account, val dst: Account) {
 
     constructor(n3: Node.Elem)
         :this(
-            (n3/"Amt"/'#').toDouble(),
-            (n3/"(NtryRef)?"/'#'),
-            (n3/"CdtDbtInd"/'#').toEnum<Type>(),
-            (n3/"NtryDtls"/"TxDtls"/"RmtInf"/"Ustrd"/'#'),
-            Account("srcAccountOf(n3)"), Account("dstAccountOf(n3))"))
+            (n3/"Amt/#").value.toDouble(),
+            (n3/"(NtryRef)?/#").value,
+            (n3/"CdtDbtInd/#").value.toEnum<Type>(),
+            (n3/"NtryDtls/TxDtls/RmtInf/Ustrd/#").value,
+            (n3/"NtryDtls/TxDtls/RltdPties/DbtrAcct").toAccount(),
+            (n3/"NtryDtls/TxDtls/RltdPties/CdtrAcct").toAccount()
+        )
 }
 
 fun processStatementFile(fileName: String): Unit {
