@@ -5,15 +5,15 @@ fun main(args: Array<String>) {
     // statement-2019-06.xml statement-2019-07.xml statement-2019-08.xml statement-2019-09.xml
     // statement-2019-10.xml statement-2019-11.xml statement-2019-12.xml
 
-    extractNtries(args.iterator())
-        .filter(Ntry::isBankCommission)
+    extractN3s(args.iterator())
+        .filter(N3::isBankCommission)
         //.sumByDouble { it.amount }
         //.printIt()
         .forEach { println(it) }
 }
 fun Double.printIt(format: String="value is $this") = println(format)
 
-fun Ntry.isBankCommission() = dsc.endsWith("COMM")
+fun N3.isBankCommission() = dsc.endsWith("COMM")
 
 
 data class Account(val name: String)
@@ -23,13 +23,13 @@ private inline fun <reified T : Enum<T>> String.toEnum(): T = enumValueOf(this)
 
 private fun Node.toAccount() = Account(textValue)
 
-data class Ntry(val id:     Int,
-                val amount: Double,
-                val n3ref:  String?,
-                val cdtDbt: CdtDbt,
-                val dsc:    String,
-                val src:    Account,
-                val dst:    Account)
+data class N3(val id:     Int,
+              val amount: Double,
+              val n3ref:  String?,
+              val cdtDbt: CdtDbt,
+              val dsc:    String,
+              val src:    Account,
+              val dst:    Account)
 {
     enum class CdtDbt {
         CRDT,
@@ -64,16 +64,16 @@ data class Ntry(val id:     Int,
 }
 
 /** Extract entries from a single statement file */
-fun extractNtries(stmtFileName: String): Sequence<Ntry> =
+fun extractN3s(stmtFileName: String): Sequence<N3> =
     DocBuilder()
         .build(stmtFileName)
         .elements()
         .filter { it.name == "Ntry"}
-        .map(::Ntry)
+        .map(::N3)
 
 /** Extract entries from a collection of statement files */
-fun extractNtries(fileNames: Iterator<String>): Sequence<Ntry>  = sequence {
-    fileNames.forEach() { yieldAll(extractNtries(it)) }
+fun extractN3s(fileNames: Iterator<String>): Sequence<N3> = sequence {
+    fileNames.forEach() { yieldAll(extractN3s(it)) }
 }
 
 interface Person {
