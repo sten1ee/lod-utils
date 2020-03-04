@@ -24,15 +24,15 @@ private inline fun <reified T : Enum<T>> String.toEnum(): T = enumValueOf(this)
 
 private fun Node.toAccount() = Account(textValue)
 
+data class Party(val name: String, val acct: Account)
+
 data class N3(val id:       Int,
               val amount:   Double,
               val n3ref:    String?,
               val cdtDbt:   CdtDbt,
               val dsc:      String,
-              val dbtr:     String,
-              val dbtrAcct: Account,
-              val cdtr:     String,
-              val cdtrAcct: Account)
+              val dbtr:     Party,
+              val cdtr:     Party)
 {
     enum class CdtDbt {
         CRDT,
@@ -61,10 +61,10 @@ data class N3(val id:       Int,
             (n3/"(NtryRef)?/#").value,
             (n3/"CdtDbtInd/#").value.toEnum<CdtDbt>(),
             (n3/"NtryDtls/TxDtls/RmtInf/Ustrd/#").value,
-            (n3/"NtryDtls/TxDtls/RltdPties/Dbtr/(Nm)?").textValue,
-            (n3/"NtryDtls/TxDtls/RltdPties/DbtrAcct").toAccount(),
-            (n3/"NtryDtls/TxDtls/RltdPties/Cdtr/(Nm)?").textValue,
-            (n3/"NtryDtls/TxDtls/RltdPties/CdtrAcct").toAccount()
+      Party((n3/"NtryDtls/TxDtls/RltdPties/Dbtr/(Nm)?").textValue,
+            (n3/"NtryDtls/TxDtls/RltdPties/DbtrAcct").toAccount()),
+      Party((n3/"NtryDtls/TxDtls/RltdPties/Cdtr/(Nm)?").textValue,
+            (n3/"NtryDtls/TxDtls/RltdPties/CdtrAcct").toAccount())
         )
 }
 
