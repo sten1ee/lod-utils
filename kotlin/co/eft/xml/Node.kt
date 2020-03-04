@@ -96,7 +96,7 @@ sealed class Node(open val parent: Node?, open val name: String, open val value:
                     else if (optional)
                         return nullText()
                     else
-                        throw NoSuchElementException("No '#' child element in xpath: $xpath")
+                        throw NoSuchElementException("No #text child element in xpath: ${xpath.render()}")
                 }
             }
             else { // not a #text
@@ -106,7 +106,7 @@ sealed class Node(open val parent: Node?, open val name: String, open val value:
                     else if (optional)
                         return nullElem(actualName)
                     else
-                        throw NoSuchElementException("No '$actualName' child element in xpath: $xpath")
+                        throw NoSuchElementException("No '$actualName' child element in xpath: ${xpath.render()}")
                 }
             }
         }
@@ -164,3 +164,6 @@ sealed class Node(open val parent: Node?, open val name: String, open val value:
             get() = value
     }
 }
+
+
+private fun <T> List<T>.render() = joinToString("/")

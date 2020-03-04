@@ -6,12 +6,13 @@ fun main(args: Array<String>) {
     // statement-2019-10.xml statement-2019-11.xml statement-2019-12.xml
 
     extractN3s(args.iterator())
-        .filter(N3::isBankCommission)
+        .filterNot(N3::isBankCommission)
+        //.filter { it.cdtDbt == N3.CdtDbt.DBIT }
         //.sumByDouble { it.amount }
         //.printIt()
         .forEach { println(it) }
 }
-fun Double.printIt(format: String="value is $this") = println(format)
+fun Double.printIt() = print(this)
 
 fun N3.isBankCommission() = dsc.endsWith("COMM")
 
@@ -23,13 +24,15 @@ private inline fun <reified T : Enum<T>> String.toEnum(): T = enumValueOf(this)
 
 private fun Node.toAccount() = Account(textValue)
 
-data class N3(val id:     Int,
-              val amount: Double,
-              val n3ref:  String?,
-              val cdtDbt: CdtDbt,
-              val dsc:    String,
-              val src:    Account,
-              val dst:    Account)
+data class N3(val id:       Int,
+              val amount:   Double,
+              val n3ref:    String?,
+              val cdtDbt:   CdtDbt,
+              val dsc:      String,
+              val dbtr:     String,
+              val dbtrAcct: Account,
+              val cdtr:     String,
+              val cdtrAcct: Account)
 {
     enum class CdtDbt {
         CRDT,
@@ -58,7 +61,9 @@ data class N3(val id:     Int,
             (n3/"(NtryRef)?/#").value,
             (n3/"CdtDbtInd/#").value.toEnum<CdtDbt>(),
             (n3/"NtryDtls/TxDtls/RmtInf/Ustrd/#").value,
+            (n3/"NtryDtls/TxDtls/RltdPties/Dbtr/(Nm)?").textValue,
             (n3/"NtryDtls/TxDtls/RltdPties/DbtrAcct").toAccount(),
+            (n3/"NtryDtls/TxDtls/RltdPties/Cdtr/(Nm)?").textValue,
             (n3/"NtryDtls/TxDtls/RltdPties/CdtrAcct").toAccount()
         )
 }
