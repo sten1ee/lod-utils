@@ -32,7 +32,9 @@ data class N3(val id:       Int,
               val cdtDbt:   CdtDbt,
               val dsc:      String,
               val dbtr:     Party,
-              val cdtr:     Party)
+              val cdtr:     Party,
+              val valDt:    String,
+              val bookDt:   String)
 {
     enum class CdtDbt {
         CRDT,
@@ -64,7 +66,9 @@ data class N3(val id:       Int,
       Party((n3/"NtryDtls/TxDtls/RltdPties/Dbtr/(Nm)?").textValue,
             (n3/"NtryDtls/TxDtls/RltdPties/DbtrAcct").toAccount()),
       Party((n3/"NtryDtls/TxDtls/RltdPties/Cdtr/(Nm)?").textValue,
-            (n3/"NtryDtls/TxDtls/RltdPties/CdtrAcct").toAccount())
+            (n3/"NtryDtls/TxDtls/RltdPties/CdtrAcct").toAccount()),
+            (n3/"ValDt/Dt/#").value,
+            (n3/"BookgDt/Dt/#").value
         )
 }
 
