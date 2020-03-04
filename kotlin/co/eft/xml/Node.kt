@@ -69,7 +69,7 @@ sealed class Node(open val parent: Node?, open val name: String, open val value:
         }
 
         private fun nullElem(elemName: String) = Elem(parent=this, name="<<null $elemName>>")
-        private fun nullText() = Text(parent=this, value="<<null #>>")
+        private fun nullText() = Text(parent=this, value="<<null #text>>")
         private fun isNullElem() = name.startsWith("<<null ") && name.endsWith(">>")
 
         operator fun  div(xpath: String) = evalXpath(xpath.split('/'))
@@ -99,13 +99,15 @@ sealed class Node(open val parent: Node?, open val name: String, open val value:
                         throw NoSuchElementException("No '#' child element in xpath: $xpath")
                 }
             }
-            with (children(actualName)) {
-                if (any())
-                    return (single() as Elem).evalXpath(xpath, cur + 1)
-                else if (optional)
-                    return nullElem(actualName)
-                else
-                    throw NoSuchElementException("No '$actualName' child element in xpath: $xpath")
+            else { // not a #text
+                with(children(actualName)) {
+                    if (any())
+                        return (single() as Elem).evalXpath(xpath, cur + 1)
+                    else if (optional)
+                        return nullElem(actualName)
+                    else
+                        throw NoSuchElementException("No '$actualName' child element in xpath: $xpath")
+                }
             }
         }
 
