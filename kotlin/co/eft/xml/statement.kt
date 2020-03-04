@@ -6,8 +6,15 @@ fun main(args: Array<String>) {
     // statement-2019-10.xml statement-2019-11.xml statement-2019-12.xml
 
     extractNtries(args.iterator())
+        .filter(Ntry::isBankCommission)
+        //.sumByDouble { it.amount }
+        //.printIt()
         .forEach { println(it) }
 }
+fun Double.printIt(format: String="value is $this") = println(format)
+
+fun Ntry.isBankCommission() = dsc.endsWith("COMM")
+
 
 data class Account(val name: String)
 
