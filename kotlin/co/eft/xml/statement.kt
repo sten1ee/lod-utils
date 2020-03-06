@@ -6,16 +6,68 @@ fun main(args: Array<String>) {
     // statement-2019-10.xml statement-2019-11.xml statement-2019-12.xml
 
     extractN3s(args.iterator())
-        .filterNot(N3::isBankCommission)
-        //.filter { it.cdtDbt == N3.CdtDbt.DBIT }
+        .select(N3::isBankTax)
+        .select(N3::isATMWithdrawal)
+        .select(N3::isATMWithdrawalTax)
+        .select(N3::isMonthlyTaxSMS)
+        .select(N3::isOwnerCredit)
+        .select(N3::isOwnerDebit)
+        .select(N3::isBgPosDebit)
+        .select(N3::isNapDebit)
+        .select(N3::isReceiptDebit)
         //.sumByDouble { it.amount }
         //.printIt()
-        .forEach { println(it) }
+        .map { print(it) }
+        .count().printIt()
 }
+
+fun <T> Sequence<T>.select(predicate: (T) -> Boolean): Sequence<T> = this.filterNot(predicate)
+
 fun Double.printIt() = print(this)
+fun Int.printIt() = print(this)
+fun <T> print(it: T): T { println(it); return it}
 
-fun N3.isBankCommission() = dsc.endsWith("COMM")
+fun N3.isBankTax() =
+               isDebit()
+            && dsc.endsWith("COMM")
 
+fun N3.isATMWithdrawal() =
+               isDebit()
+            && dsc.startsWith("Теглене от АТМ ")
+            && !dsc.endsWith("-Такса")
+
+fun N3.isATMWithdrawalTax() =
+               isDebit()
+            && dsc.startsWith("Теглене от АТМ ")
+            && dsc.endsWith("-Такса")
+
+fun N3.isMonthlyTaxSMS() =
+               isDebit()
+            && dsc == "Месечна такса SMS известие"
+
+fun N3.isOwnerDebit() =
+               isDebit()
+            && cdtr.acct.name == "BG34FINV91501016623437"
+
+fun N3.isOwnerCredit() =
+               isCredit()
+            && dbtr.acct.name == "BG34FINV91501016623437"
+
+fun N3.isBgPosDebit() =
+               isDebit()
+            && dsc == "Плащане при БГ търговец"
+
+fun N3.isNapDebit() =
+               isDebit()
+            && cdtr.name.startsWith("ТД НА НАП ") // assert this
+            && cdtr.acct.name.indexOf("UBBS88888") == 4
+            && cdtr.acct.name.endsWith("00")
+
+fun N3.isReceiptDebit() =
+               isDebit()
+            && (dsc.startsWith("ПЛАЩАНЕ ПО ФАКТУРА ")
+              || dsc.startsWith("ПЛАЩАНЕ ФАКТУРА ")
+              || dsc.startsWith("ПЛАЩАНЕ ФАКТУРИ "))
 
 data class Account(val name: String)
 
@@ -70,6 +122,9 @@ data class N3(val id:       Int,
             (n3/"ValDt/Dt/#").value,
             (n3/"BookgDt/Dt/#").value
         )
+
+    fun isDebit() = cdtDbt == CdtDbt.DBIT
+    fun isCredit() = cdtDbt == CdtDbt.CRDT
 }
 
 /** Extract entries from a single statement file */
