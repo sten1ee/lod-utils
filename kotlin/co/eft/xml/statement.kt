@@ -7,6 +7,7 @@ fun main(args: Array<String>) {
 
     extractN3s(args.iterator())
         .select(N3::isBankTax)
+        .select(N3::isOtherBankTax)
         .select(N3::isATMWithdrawal)
         .select(N3::isATMWithdrawalTax)
         .select(N3::isMonthlyTaxSMS)
@@ -17,19 +18,22 @@ fun main(args: Array<String>) {
         .select(N3::isReceiptDebit)
         //.sumByDouble { it.amount }
         //.printIt()
-        .map { print(it) }
-        .count().printIt()
+        .onEach { println(it) }
+        .count().also { println(it) }
 }
 
 fun <T> Sequence<T>.select(predicate: (T) -> Boolean): Sequence<T> = this.filterNot(predicate)
 
-fun Double.printIt() = print(this)
-fun Int.printIt() = print(this)
 fun <T> print(it: T): T { println(it); return it}
 
 fun N3.isBankTax() =
                isDebit()
             && dsc.endsWith("COMM")
+
+fun N3.isOtherBankTax() =
+               isDebit()
+            && dbtr.isBlank()
+            && cdtr.isBlank()
 
 fun N3.isATMWithdrawal() =
                isDebit()
@@ -47,11 +51,11 @@ fun N3.isMonthlyTaxSMS() =
 
 fun N3.isOwnerDebit() =
                isDebit()
-            && cdtr.acct.name == "BG34FINV91501016623437"
+            && cdtr.acctNr == "BG34FINV91501016623437"
 
 fun N3.isOwnerCredit() =
                isCredit()
-            && dbtr.acct.name == "BG34FINV91501016623437"
+            && dbtr.acctNr == "BG34FINV91501016623437"
 
 fun N3.isBgPosDebit() =
                isDebit()
@@ -60,8 +64,8 @@ fun N3.isBgPosDebit() =
 fun N3.isNapDebit() =
                isDebit()
             && cdtr.name.startsWith("ТД НА НАП ") // assert this
-            && cdtr.acct.name.indexOf("UBBS88888") == 4
-            && cdtr.acct.name.endsWith("00")
+            && cdtr.acctNr.indexOf("UBBS88888") == 4
+            && cdtr.acctNr.endsWith("00")
 
 fun N3.isReceiptDebit() =
                isDebit()
@@ -74,9 +78,9 @@ data class Account(val name: String)
 
 private inline fun <reified T : Enum<T>> String.toEnum(): T = enumValueOf(this)
 
-private fun Node.toAccount() = Account(textValue)
-
-data class Party(val name: String, val acct: Account)
+data class Party(val name: String, val acctNr: String) {
+    fun  isBlank() = (name.isBlank() && acctNr.isBlank())
+}
 
 data class N3(val id:       Int,
               val amount:   Double,
@@ -116,9 +120,9 @@ data class N3(val id:       Int,
             (n3/"CdtDbtInd/#").value.toEnum<CdtDbt>(),
             (n3/"NtryDtls/TxDtls/RmtInf/Ustrd/#").value,
       Party((n3/"NtryDtls/TxDtls/RltdPties/Dbtr/(Nm)?").textValue,
-            (n3/"NtryDtls/TxDtls/RltdPties/DbtrAcct").toAccount()),
+            (n3/"NtryDtls/TxDtls/RltdPties/DbtrAcct").textValue),
       Party((n3/"NtryDtls/TxDtls/RltdPties/Cdtr/(Nm)?").textValue,
-            (n3/"NtryDtls/TxDtls/RltdPties/CdtrAcct").toAccount()),
+            (n3/"NtryDtls/TxDtls/RltdPties/CdtrAcct").textValue),
             (n3/"ValDt/Dt/#").value,
             (n3/"BookgDt/Dt/#").value
         )
