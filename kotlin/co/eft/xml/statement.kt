@@ -11,11 +11,14 @@ fun main(args: Array<String>) {
         .select(N3::isATMWithdrawal)
         .select(N3::isATMWithdrawalTax)
         .select(N3::isMonthlyTaxSMS)
-        .select(N3::isOwnerCredit)
         .select(N3::isOwnerDebit)
         .select(N3::isBgPosDebit)
         .select(N3::isNapDebit)
         .select(N3::isReceiptDebit)
+        .select(N3::isPayrollDebit)
+
+        .select(N3::isOwnerCredit)
+        .select(N3::isIncomeCredit)
         //.sumByDouble { it.amount }
         //.printIt()
         .onEach { println(it) }
@@ -56,6 +59,12 @@ fun N3.isOwnerDebit() =
 fun N3.isOwnerCredit() =
                isCredit()
             && dbtr.acctNr == "BG34FINV91501016623437"
+            && cdtr.acctNr == "BG63RZBB91551010205632"
+
+fun N3.isIncomeCredit() =
+               isCredit()
+            && dbtr.acctNr != "BG34FINV91501016623437"
+            && cdtr.acctNr == "BG63RZBB91551010205632"
 
 fun N3.isBgPosDebit() =
                isDebit()
@@ -72,6 +81,11 @@ fun N3.isReceiptDebit() =
             && (dsc.startsWith("ПЛАЩАНЕ ПО ФАКТУРА ")
               || dsc.startsWith("ПЛАЩАНЕ ФАКТУРА ")
               || dsc.startsWith("ПЛАЩАНЕ ФАКТУРИ "))
+
+fun N3.isPayrollDebit() =
+               isDebit()
+            && (dsc.startsWith("ЗАПЛАТА ")
+              || dsc.startsWith("ЗАПЛАТИ "))
 
 data class Account(val name: String)
 
