@@ -8,9 +8,9 @@ fun main(args: Array<String>) {
     extractN3s(args.iterator())
         .select(N3::isBankTax)
         .select(N3::isOtherBankTax)
-        .select(N3::isATMWithdrawal)
-        .select(N3::isATMWithdrawalTax)
-        .select(N3::isMonthlyTaxSMS)
+        .select(N3::isATMDebit)
+        .select(N3::isATMDebitTax)
+        .select(N3::isMonthlyBankTax)
         .select(N3::isOwnerDebit)
         .select(N3::isBgPosDebit)
         .select(N3::isNapDebit)
@@ -22,7 +22,8 @@ fun main(args: Array<String>) {
         //.sumByDouble { it.amount }
         //.printIt()
         .onEach { println(it) }
-        .count().also { println(it) }
+        .sumByDouble { it.amount }
+        .also { println("%.2f".format(it)) }
 }
 
 fun <T> Sequence<T>.select(predicate: (T) -> Boolean): Sequence<T> = this.filterNot(predicate)
@@ -38,17 +39,17 @@ fun N3.isOtherBankTax() =
             && dbtr.isBlank()
             && cdtr.isBlank()
 
-fun N3.isATMWithdrawal() =
+fun N3.isATMDebit() =
                isDebit()
             && dsc.startsWith("Теглене от АТМ ")
             && !dsc.endsWith("-Такса")
 
-fun N3.isATMWithdrawalTax() =
+fun N3.isATMDebitTax() =
                isDebit()
             && dsc.startsWith("Теглене от АТМ ")
             && dsc.endsWith("-Такса")
 
-fun N3.isMonthlyTaxSMS() =
+fun N3.isMonthlyBankTax() =
                isDebit()
             && dsc == "Месечна такса SMS известие"
 
