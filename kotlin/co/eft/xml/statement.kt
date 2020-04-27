@@ -6,19 +6,21 @@ fun main(args: Array<String>) {
     // statement-2019-10.xml statement-2019-11.xml statement-2019-12.xml
 
     extractN3s(args.iterator())
-        .select(N3::isBankTax)
-        .select(N3::isOtherBankTax)
-        .select(N3::isATMDebit)
-        .select(N3::isATMDebitTax)
-        .select(N3::isMonthlyBankTax)
-        .select(N3::isOwnerDebit)
-        .select(N3::isBgPosDebit)
-        .select(N3::isNapDebit)
-        .select(N3::isReceiptDebit)
-        .select(N3::isPayrollDebit)
+        .selectAny(
+            N3::isBankTax,
+            N3::isOtherBankTax,
+            N3::isATMDebit,
+            N3::isATMDebitTax,
+            N3::isMonthlyBankTax,
+            N3::isOwnerDebit,
+            N3::isBgPosDebit,
+            N3::isNapDebit,
+            N3::isReceiptDebit,
+            N3::isPayrollDebit
 
-        .select(N3::isOwnerCredit)
-        .select(N3::isIncomeCredit)
+            //N3::isOwnerCredit,
+            //N3::isIncomeCredit
+        )
         //.sumByDouble { it.amount }
         //.printIt()
         .onEach { println(it) }
@@ -26,7 +28,10 @@ fun main(args: Array<String>) {
         .also { println("%.2f".format(it)) }
 }
 
-fun <T> Sequence<T>.select(predicate: (T) -> Boolean): Sequence<T> = this.filterNot(predicate)
+fun <T> Sequence<T>.select(predicate: (T) -> Boolean): Sequence<T> = filter(predicate)
+
+fun <T> Sequence<T>.selectAny(vararg predicates: (T) -> Boolean): Sequence<T> =
+    filter { t -> predicates.any { p -> p(t) }}
 
 fun <T> print(it: T): T { println(it); return it}
 
